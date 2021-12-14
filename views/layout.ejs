@@ -17,31 +17,27 @@
     @import url('https://fonts.googleapis.com/css?family=Poppins:400,700,900');
     </style>
     <style>
-@import url('http://fonts.cdnfonts.com/css/gilroy-bold');
-</style>
-<%- style%>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js"></script>
-
-
-
+    @import url('http://fonts.cdnfonts.com/css/gilroy-bold');
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js"></script>
+    <%- style%>
 </head>
 <body class=" animate__animated animate__fadeIn">
-    <% if(!locals.user){%>
+    <% if(locals.user){%>
+        <%- include('_header');%>
+        <div id="social">
+            <a id="hackerrank" class="social-btn" target="_blank" href="https://www.hackerrank.com/dashboard"><img class="social-img" src="/images/logo hackerrank icon.png" alt="HR"></a>
 
-    <%- include('_header');%>
-    <div id="social">
-		<a id="hackerrank" class="social-btn" target="_blank" href="https://www.hackerrank.com/dashboard"><img class="social-img" src="/images/logo hackerrank icon.png" alt="HR"></a>
+            <a id="leetcode" class="social-btn" target="_blank" href="https://leetcode.com/problemset/all/"><img class="social-img" src="/images/LeetCode_logo_black.png" alt="LC"></a>
 
-        <a id="leetcode" class="social-btn" target="_blank" href="https://leetcode.com/problemset/all/"><img class="social-img" src="/images/LeetCode_logo_black.png" alt="LC"></a>
+            <a id="gfg" class="social-btn" target="_blank" href="https://practice.geeksforgeeks.org/explore/?page=1"><img class="social-img" src="/images/GeeksforGeeks.png" alt="gfg"></a>
 
-        <a id="gfg" class="social-btn" target="_blank" href="https://practice.geeksforgeeks.org/explore/?page=1"><img class="social-img" src="/images/GeeksforGeeks.png" alt="gfg"></a>
+            <a id="codeforces" class="social-btn" target="_blank" href="https://codeforces.com/problemset"><img class="social-img" src="/images/code-forces-3628695-3029920.png" alt="CF"></a>
 
-        <a id="codeforces" class="social-btn" target="_blank" href="https://codeforces.com/problemset"><img class="social-img" src="/images/code-forces-3628695-3029920.png" alt="CF"></a>
+            <a id="codechef" class="social-btn" target="_blank" href="https://www.codechef.com/"><img class="social-img" src="/images/11960354.png" alt="CC"></a>
 
-        <a id="codechef" class="social-btn" target="_blank" href="https://www.codechef.com/"><img class="social-img" src="/images/11960354.png" alt="CC"></a>
-
-        <a id="hackerearth" class="social-btn" target="_blank" href="https://www.hackerearth.com/"><img class="social-img" src="/images/HackerEarth_logo.png" alt="HE"></a>
-    </div>
+            <a id="hackerearth" class="social-btn" target="_blank" href="https://www.hackerearth.com/"><img class="social-img" src="/images/HackerEarth_logo.png" alt="HE"></a>
+        </div>
     <%}%>
     <%- body%>
     <%- script%>

@@ -1,18 +1,13 @@
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-// const env = require('./environment');
-// // mongoose.connect(`mongodb://localhost/${env.db}`,{useNewUrlParser:true,useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost/Everlast_Notes');
 
-// mongoose.connect('mongodb://localhost/ShareExpress_development');
+const db = mongoose.connection;
 
-// const db = mongoose.connection;
+db.on('error', console.error.bind(console, "Error connecting to MongoDB"));
 
-// db.on('error', console.error.bind(console, "Error connecting to MongoDB"));
+db.once('open', function(){
+    console.log('Connected to Database :: MongoDB');
+});
 
-
-// db.once('open', function(){
-//     console.log('Connected to Database :: MongoDB');
-// });
-
-
-// module.exports = db;
+module.exports = db;
