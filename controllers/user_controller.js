@@ -9,6 +9,14 @@ module.exports.login = function(req,res){
         title:'Everlast Notes'
     });
 };
+module.exports.signup = function(req,res){
+    if (req.isAuthenticated()){
+        return res.redirect('/');
+    }
+    return res.render('signup',{
+        title:'Create Account'
+    });
+};
 // // sign in and create a session for the user
 module.exports.createSession = function(req, res){
     req.flash('success', 'Logged in Successfully');

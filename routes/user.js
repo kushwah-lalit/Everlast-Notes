@@ -4,6 +4,7 @@ const passport = require('passport');
 console.log("Router Loaded");
 const userController = require('../controllers/user_controller');
 router.get('/login',userController.login);
+router.get('/signup',userController.signup);
 // usemiddleware to authenticate
 router.post('/create-session',passport.authenticate(
     'local',

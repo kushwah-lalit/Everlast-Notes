@@ -1,0 +1,339 @@
+* {
+    box-sizing: border-box;
+}
+
+body{
+	font-family: 'Poppins', sans-serif;
+	margin: 0px;
+	background:url("/images/image.png"), #FFFFFF;
+	position:absolute;
+	background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+	background-repeat:no-repeat;
+}
+h1 {
+    font-weight:500;
+    margin: 0;
+}
+
+p {
+    font-size: 14px;
+    font-weight: 100;
+    line-height: 20px;
+    letter-spacing: .5px;
+    margin: 20px 0 30px;
+}
+
+span {
+    font-size: 12px;
+}
+
+a {
+    color: #333;
+    font-size: 14px;
+    text-decoration: none;
+    margin: 15px 0;
+}
+nav{
+	width: 100%;
+	height: 5rem;
+	display: flex;
+	box-sizing: border-box;
+	flex-direction:row;
+	align-items: center;
+	justify-content:space-between; 
+	position:fixed;
+}
+#right{
+	width: 20%;
+	margin-right:20rem ;
+}
+#left{
+	width: 20%;
+    margin-left:13rem ;
+}
+#img img{
+	min-width: 200px;
+	width:80%;
+}
+.TextinBlock{
+	font-family: Poppins;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 1.6rem;
+	line-height: 25px;
+	letter-spacing: 0.045em;
+
+	/* main text color */
+
+	color: #FFFFFF;
+}
+
+#social {
+  position: fixed;
+  top: 25%;
+  right: 0px;
+
+ 
+}
+
+#social .social-btn {
+  display: block;
+  padding: 14px 13px;
+  margin: 0 !important;
+
+}
+
+#social .social-img {
+  width: 23px;
+}
+
+#facebook {
+  background-color: #3b5998;
+}
+
+#facebook:hover {
+  background-color: #2d4373;
+}
+
+#linkedin {
+  background-color: #0077b5;
+}
+
+#linkedin:hover {
+  background-color: #104b9b;
+}
+
+#github {
+  background-color: white;
+}
+
+#github:hover {
+  background-color:#6e7781;
+}
+
+#instagram {
+  background-color: #f95347;
+}
+
+#instagram:hover {
+  background-color:#fb3423;
+}
+#loginbtn{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+/*	background: rgba(255, 255, 255, 0.1);*/
+	border: 1px solid #ddd;
+	box-sizing: border-box;
+	/*box-shadow: 0px 3.45075px 12.9403px rgba(0, 0, 0, 0.11);*/
+	border-radius:20px;
+	width:200px;
+	height:42px;
+	margin-top:0.8rem;
+	margin-bottom:0.8rem;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in-out;
+}
+#loginbtn a{
+	font-family: Poppins;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 0.8rem;
+
+
+
+	color:black;
+
+	text-decoration: none;
+		transition-duration: 0.2s;
+	transition-timing-function: ease-out;
+
+}
+#loginbtn a:hover{
+	font-size: 0.85rem;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in-out;
+}
+#loginbtn:hover{
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in-out;
+	border: 1px solid black;
+}
+
+#loginbtn img{
+	width: 22px;
+}
+
+
+.content{
+	display:flex;
+	flex-direction:row;
+	align-items: center;
+	justify-content:space-around;
+	width:100vw;
+	height:100vh;
+}
+.container {
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, .2), 0 10px 10px rgba(0, 0, 0, .2);
+    position: relative;
+    overflow: hidden;
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
+}
+
+.form-container form {
+    background: #fff;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    padding:  0 50px;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container input {
+    background: #eee;
+    border: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    width: 100%;
+}
+
+button {
+    border-radius: 20px;
+    border: 1px solid white;
+    background: linear-gradient(60deg, #00DDFB 28.07%, #00B0FB 40.55%, #00A0FA 52.67%, #0064FA 64.44%, #0073F9 76.11%);
+    color: #fff;
+    font-size:0.8rem;
+    font-weight:500;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+/*    transition: transform 80ms ease-in;*/
+    	transition-duration: 0.2s;
+	transition-timing-function: ease-in-out;
+}
+button:hover{
+	border: 2px solid darkgray;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in-out;
+}
+
+button:active {
+    transform: scale(.95);
+}
+
+button:focus {
+    outline: none;
+}
+
+button.ghost {
+    background: transparent;
+    border-color: #fff;
+}
+
+.form-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all .6s ease-in-out;
+}
+
+.sign-in-container {
+    left: 0;
+    width: 50%;
+    z-index: 2;
+}
+
+.sign-up-container {
+    left: 0;
+    width: 50%;
+    z-index: 1;
+    opacity: 0;
+}
+
+.overlay-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform .6s ease-in-out;
+    z-index: 100;
+}
+
+.overlay {
+		background-color:black;
+		background: linear-gradient(60deg, #00CFFC 0.5%, #00DDFB 15.05%, #00DDFB 28.07%, #00B0FB 40.55%, #00A0FA 52.67%, #0064FA 64.44%, #0073F9 76.11%, #0081F8 87.34%, #0072F8 90.3%);
+    color: #fff;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateY(0);
+    transition: transform .6s ease-in-out;
+}
+
+.overlay-panel {
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 40px;
+    height: 100%;
+    width: 50%;
+    text-align: center;
+    transform: translateY(0);
+    transition: transform .6s ease-in-out;
+}
+
+.overlay-right {
+    right: 0;
+    transform: translateY(0);
+}
+
+.overlay-left {
+    transform: translateY(-20%);
+}
+
+/* Move signin to right */
+.container.right-panel-active .sign-in-container {
+    transform: translateY(100%);
+}
+
+/* Move overlay to left */
+.container.right-panel-active .overlay-container {
+    transform: translateX(-100%);
+}
+
+/* Bring signup over signin */
+.container.right-panel-active .sign-up-container {
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+}
+
+/* Move overlay back to right */
+.container.right-panel-active .overlay {
+    transform: translateX(50%);
+}
+
+/* Bring back the text to center */
+.container.right-panel-active .overlay-left {
+    transform: translateY(0);
+}
+
+/* Same effect for right */
+.container.right-panel-active .overlay-right {
+    transform: translateY(20%);
+}
+
+
