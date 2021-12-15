@@ -24,17 +24,22 @@ passport.use(new googleStrategy({
 
             if (user){
                 // if found, set this user as req.user
+                let ImgUrl = profile.photos[0].value.replace("=s96-c","=s720-c");
                 user.name = profile.displayName;
-                user.avatar = profile.photos[0].value;
+                if(user.avatar.endsWith("=s720-c")){
+                    user.avatar = ImgUrl;
+                }
                 user.save();
                 return done(null, user);
             }else{
                 // if not found, create the user and set it as req.user
+                const ImgUrl = profile.photos[0].value.replace("=s96-c","=s720-c");
                 User.create({
                     name: profile.displayName,
                     email: profile.emails[0].value,
                     password: crypto.randomBytes(20).toString('hex'),
-                    avatar:profile.photos[0].value
+                    avatar:ImgUrl,
+                    isVerified:profile.emails[0].verified
                 }, function(err, user){
                     if (err){console.log('error in creating user google strategy-passport', err); return;}
                     return done(null, user);

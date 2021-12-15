@@ -23,6 +23,14 @@ const userSchema = new mongoose.Schema({
     problemCount:{
         type:Number,
         default:0
+    },
+    emailToken:{
+        type:String,
+        default:null
+    },
+    isVerified:{
+        type:Boolean,
+        default:false
     }
 },
 {

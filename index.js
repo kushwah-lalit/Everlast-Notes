@@ -11,6 +11,9 @@ const crypto = require('crypto');
 const flash = require('connect-flash');
 const customMiddleware = require('./config/middleware');
 const db = require('./config/mongoose');
+const sgMail = require('@sendgrid/mail');
+// sendgrid api key for the connection validation
+sgMail.setApiKey('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');
 const expressLayouts = require('express-ejs-layouts');
 app.use(expressLayouts);
 app.set('layout extractStyles', true);

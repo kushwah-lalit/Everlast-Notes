@@ -21,8 +21,14 @@ passport.use(new LocalStrategy({
                 // console.log('Invalid User or password');
                 req.flash('error', 'Invalid Username/Password');
                 return done(null,false);
+            }else{
+                if(user.isVerified){
+                    console.log(user);
+                    return done(null,user);
+                }else{
+                    return done(null,false);
+                }
             }
-            return done(null,user);
         });
     }
 ));

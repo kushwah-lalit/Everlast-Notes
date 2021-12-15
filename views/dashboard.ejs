@@ -34,6 +34,7 @@
             <li><a href="#" >Task list</a></li>
             <li><a href="#" >Codes</a></li>
             <li><a href="#" >Notes</a></li>
+            <li><a href="/users/profile" >Profile</a></li>
         </ul>
         </div>
         <div id="btn-out">
@@ -55,34 +56,65 @@
         </div>
         <div id="lists">
             <div id="recents">
-                <div class="header"><div style="width:5%;text-align: center;">Sno.</div><div style="width:48%">Recently Solved Problems</div><div style="width:35%">Category</div><div style="width:12%"></div></div>
-                <div class="item"><div style="width:5%;text-align: center;">1.</div><div style="width:48%" class="question"><a href="#">Coin Change Problem</a></div><div style="width:35%">DP</div><div style="width:12%; display: flex; justify-content: space-around;"><a style="color:#6BAAED;" href="#"><i class="fas fa-link"></i></a>&nbsp<a  href="#"style="color: rgba(255, 255, 255, 0.87);" id="del"><i class="fas fa-trash-alt"></i></a></div></div>
-                <div class="item"><div style="width:5%;text-align: center;">2.</div><div style="width:48%" class="question"><a >Rat in Maze</a></div><div style="width:35%">Backtracking</div><div style="width:12%; display: flex; justify-content: space-around;"><a style="color:#6BAAED;"><i class="fas fa-link"></i></a>&nbsp<a style="color: rgba(255, 255, 255, 0.87);" id="del"><i class="fas fa-trash-alt"></i></a></div></div>
-                <div class="item"><div style="width:5%;text-align: center;">3.</div><div style="width:48%" class="question"><a>Reverse Linked List</a></div><div style="width:35%">Linked list</div><div style="width:12%; display: flex; justify-content: space-around;"><a style="color:#6BAAED;"><i class="fas fa-link"></i></a>&nbsp<a style="color: rgba(255, 255, 255, 0.87);" id="del"><i class="fas fa-trash-alt"></i></a></div></div>
-                <div class="item"><div style="width:5%;text-align: center;">4.</div><div style="width:48%" class="question"><a>Longest increasing subsequence</a></div><div style="width:35%">DP</div><div style="width:12%; display: flex; justify-content: space-around;"><a style="color:#6BAAED;"><i class="fas fa-link"></i></a>&nbsp<a style="color: rgba(255, 255, 255, 0.87);" id="del"><i class="fas fa-trash-alt"></i></a></div></div>
-                <div class="item"><div style="width:5%;text-align: center;">5.</div><div style="width:48%" class="question"><a>Next Greater on Right</a></div><div style="width:35%">Stack</div><div style="width:12%; display: flex; justify-content: space-around;"><a style="color:#6BAAED;"><i class="fas fa-link"></i></a>&nbsp<a style="color: rgba(255, 255, 255, 0.87);" id="del"><i class="fas fa-trash-alt"></i></a></div></div>
-                <div class="item"><div style="width:5%;text-align: center;">1.</div><div style="width:48%" class="question"><a href="#">Coin Change Problem</a></div><div style="width:35%">DP</div><div style="width:12%; display: flex; justify-content: space-around;"><a style="color:#6BAAED;" href="#"><i class="fas fa-link"></i></a>&nbsp<a  href="#"style="color: rgba(255, 255, 255, 0.87);" id="del"><i class="fas fa-trash-alt"></i></a></div></div>
-                <div class="item"><div style="width:5%;text-align: center;">2.</div><div style="width:48%" class="question"><a >Rat in Maze</a></div><div style="width:35%">Backtracking</div><div style="width:12%; display: flex; justify-content: space-around;"><a style="color:#6BAAED;"><i class="fas fa-link"></i></a>&nbsp<a style="color: rgba(255, 255, 255, 0.87);" id="del"><i class="fas fa-trash-alt"></i></a></div></div>
-                <div class="item"><div style="width:5%;text-align: center;">3.</div><div style="width:48%" class="question"><a>Reverse Linked List</a></div><div style="width:35%">Linked list</div><div style="width:12%; display: flex; justify-content: space-around;"><a style="color:#6BAAED;"><i class="fas fa-link"></i></a>&nbsp<a style="color: rgba(255, 255, 255, 0.87);" id="del"><i class="fas fa-trash-alt"></i></a></div></div>
-                <div class="item"><div style="width:5%;text-align: center;">4.</div><div style="width:48%" class="question"><a>Longest increasing subsequence</a></div><div style="width:35%">DP</div><div style="width:12%; display: flex; justify-content: space-around;"><a style="color:#6BAAED;"><i class="fas fa-link"></i></a>&nbsp<a style="color: rgba(255, 255, 255, 0.87);" id="del"><i class="fas fa-trash-alt"></i></a></div></div>
-                <div class="item"><div style="width:5%;text-align: center;">5.</div><div style="width:48%" class="question"><a>Next Greater on Right</a></div><div style="width:35%">Stack</div><div style="width:12%; display: flex; justify-content: space-around;"><a style="color:#6BAAED;"><i class="fas fa-link"></i></a>&nbsp<a style="color: rgba(255, 255, 255, 0.87);" id="del"><i class="fas fa-trash-alt"></i></a></div></div>
+                <div class="header"><div style="width:5%;text-align: center;">Sno.</div><div style="width:53%">Recently Solved Problems</div><div style="width:30%">Category</div><div style="width:12%"></div></div>
+                <div class="item"><div style="width:5%;text-align: center;">1.</div><div style="width:53%" class="question"><a href="#">Coin Change Problem</a></div><div style="width:30%">DP</div><div style="width:12%; display: flex; justify-content: space-around;"><a style="color:#6BAAED;" href="#"><i class="fas fa-link"></i></a>&nbsp<a  href="#"style="color: rgba(255, 255, 255, 0.87);" id="del"><i class="fas fa-trash-alt"></i></a></div></div>
+                <div class="item"><div style="width:5%;text-align: center;">2.</div><div style="width:53%" class="question"><a >Rat in Maze</a></div><div style="width:30%">Backtracking</div><div style="width:12%; display: flex; justify-content: space-around;"><a style="color:#6BAAED;"><i class="fas fa-link"></i></a>&nbsp<a style="color: rgba(255, 255, 255, 0.87);" id="del"><i class="fas fa-trash-alt"></i></a></div></div>
+                <div class="item"><div style="width:5%;text-align: center;">3.</div><div style="width:53%" class="question"><a>Reverse Linked List</a></div><div style="width:30%">Linked list</div><div style="width:12%; display: flex; justify-content: space-around;"><a style="color:#6BAAED;"><i class="fas fa-link"></i></a>&nbsp<a style="color: rgba(255, 255, 255, 0.87);" id="del"><i class="fas fa-trash-alt"></i></a></div></div>
+                <div class="item"><div style="width:5%;text-align: center;">4.</div><div style="width:53%" class="question"><a>Longest increasing subsequence</a></div><div style="width:30%">DP</div><div style="width:12%; display: flex; justify-content: space-around;"><a style="color:#6BAAED;"><i class="fas fa-link"></i></a>&nbsp<a style="color: rgba(255, 255, 255, 0.87);" id="del"><i class="fas fa-trash-alt"></i></a></div></div>
+                <div class="item"><div style="width:5%;text-align: center;">5.</div><div style="width:53%" class="question"><a>Next Greater on Right</a></div><div style="width:30%">Stack</div><div style="width:12%; display: flex; justify-content: space-around;"><a style="color:#6BAAED;"><i class="fas fa-link"></i></a>&nbsp<a style="color: rgba(255, 255, 255, 0.87);" id="del"><i class="fas fa-trash-alt"></i></a></div></div>
+                <div class="item"><div style="width:5%;text-align: center;">1.</div><div style="width:53%" class="question"><a href="#">Coin Change Problem</a></div><div style="width:30%">DP</div><div style="width:12%; display: flex; justify-content: space-around;"><a style="color:#6BAAED;" href="#"><i class="fas fa-link"></i></a>&nbsp<a  href="#"style="color: rgba(255, 255, 255, 0.87);" id="del"><i class="fas fa-trash-alt"></i></a></div></div>
+                <div class="item"><div style="width:5%;text-align: center;">2.</div><div style="width:53%" class="question"><a >Rat in Maze</a></div><div style="width:30%">Backtracking</div><div style="width:12%; display: flex; justify-content: space-around;"><a style="color:#6BAAED;"><i class="fas fa-link"></i></a>&nbsp<a style="color: rgba(255, 255, 255, 0.87);" id="del"><i class="fas fa-trash-alt"></i></a></div></div>
+                <div class="item"><div style="width:5%;text-align: center;">3.</div><div style="width:53%" class="question"><a>Reverse Linked List</a></div><div style="width:30%">Linked list</div><div style="width:12%; display: flex; justify-content: space-around;"><a style="color:#6BAAED;"><i class="fas fa-link"></i></a>&nbsp<a style="color: rgba(255, 255, 255, 0.87);" id="del"><i class="fas fa-trash-alt"></i></a></div></div>
+                <div class="item"><div style="width:5%;text-align: center;">4.</div><div style="width:53%" class="question"><a>Longest increasing subsequence</a></div><div style="width:30%">DP</div><div style="width:12%; display: flex; justify-content: space-around;"><a style="color:#6BAAED;"><i class="fas fa-link"></i></a>&nbsp<a style="color: rgba(255, 255, 255, 0.87);" id="del"><i class="fas fa-trash-alt"></i></a></div></div>
+                <div class="item"><div style="width:5%;text-align: center;">5.</div><div style="width:53%" class="question"><a>Next Greater on Right</a></div><div style="width:30%">Stack</div><div style="width:12%; display: flex; justify-content: space-around;"><a style="color:#6BAAED;"><i class="fas fa-link"></i></a>&nbsp<a style="color: rgba(255, 255, 255, 0.87);" id="del"><i class="fas fa-trash-alt"></i></a></div></div>
 
 
                 
             
             </div>
             <div id="toppers">
-                <div class="header"><div style="width:25%;text-align: center;">Rank</div><div style="width:75%">Top Performers</div></div>
-                <div class="item"><div style="width:25%;text-align: center;color: #6BAAED !important; font-size:1.2rem;font-weight:400;font-family: 'Gilroy-Medium', sans-serif;">#1</div><div style="width:75%">Lalit Kushwah</div></div>
-                <div class="item"><div style="width:25%;text-align: center;color: #6BAAED !important; font-size:1.2rem;font-weight:400;font-family: 'Gilroy-Medium', sans-serif;">#2</div><div style="width:75%">Pratyush Aggarwal</div></div>
-                <div class="item"><div style="width:25%;text-align: center;color: #6BAAED !important; font-size:1.2rem;font-weight:400;font-family: 'Gilroy-Medium', sans-serif;">#3</div><div style="width:75%">Himanshu Modi</div></div>
-                <div class="item"><div style="width:25%;text-align: center;color: #6BAAED !important; font-size:1.2rem;font-weight:400;font-family: 'Gilroy-Medium', sans-serif;">#4</div><div style="width:75%">Kartik Shukla</div></div>
-                <div class="item"><div style="width:25%;text-align: center;color: #6BAAED !important; font-size:1.2rem;font-weight:400;font-family: 'Gilroy-Medium', sans-serif;">#5</div><div style="width:75%">Suraj Sasikumar</div></div>
-                <div class="item"><div style="width:25%;text-align: center;color: #6BAAED !important; font-size:1.2rem;font-weight:400;font-family: 'Gilroy-Medium', sans-serif;">#1</div><div style="width:75%">Navnit Anand</div></div>
-                <div class="item"><div style="width:25%;text-align: center;color: #6BAAED !important; font-size:1.2rem;font-weight:400;font-family: 'Gilroy-Medium', sans-serif;">#2</div><div style="width:75%">Pratyush Aggarwal</div></div>
-                <div class="item"><div style="width:25%;text-align: center;color: #6BAAED !important; font-size:1.2rem;font-weight:400;font-family: 'Gilroy-Medium', sans-serif;">#3</div><div style="width:75%">Himanshu Modi</div></div>
-                <div class="item"><div style="width:25%;text-align: center;color: #6BAAED !important; font-size:1.2rem;font-weight:400;font-family: 'Gilroy-Medium', sans-serif;">#4</div><div style="width:75%">Kartik Shukla</div></div>
-                <div class="item"><div style="width:25%;text-align: center;color: #6BAAED !important; font-size:1.2rem;font-weight:400;font-family: 'Gilroy-Medium', sans-serif;">#5</div><div style="width:75%">Suraj Sasikumar</div></div>
+                <div class="header"><div style="width:15%;text-align: center;">Rank</div><div style="width:65%">Top Performers</div><div style="width:20%"></div></div>
+                <div class="item"><div style="width:15%;text-align: center;color: #6BAAED !important; font-size:1.2rem;font-weight:400;font-family: 'Gilroy-Medium', sans-serif;">#1</div><div style="width:65%">Lalit Kushwah</div><div style="width:20%;box-sizing: border-box;" id="userlistdp">
+                <a href="#"><img src="/images/2021-04-02 14.31.05.jpg"></img></a>
+                </div>
+                </div>
+                <div class="item"><div style="width:15%;text-align: center;color: #6BAAED !important; font-size:1.2rem;font-weight:400;font-family: 'Gilroy-Medium', sans-serif;">#2</div><div style="width:65%">kartik Shukla</div><div style="width:20%;box-sizing: border-box;" id="userlistdp">
+                <a href="#"><img src="/images/hacker.png"></img></a>
+                </div>
+                </div>
+                <div class="item"><div style="width:15%;text-align: center;color: #6BAAED !important; font-size:1.2rem;font-weight:400;font-family: 'Gilroy-Medium', sans-serif;">#3</div><div style="width:65%">Navnit Anand</div><div style="width:20%;box-sizing: border-box;" id="userlistdp">
+                <a href="#"><img src="/images/2021-04-02 14.31.05.jpg"></img></a>
+                </div>
+                </div>
+                <div class="item"><div style="width:15%;text-align: center;color: #6BAAED !important; font-size:1.2rem;font-weight:400;font-family: 'Gilroy-Medium', sans-serif;">#4</div><div style="width:65%">Pratyush Aggarwal</div><div style="width:20%;box-sizing: border-box;" id="userlistdp">
+                <a href="#"><img src="/images/hacker.png"></img></a>
+                </div>
+                </div>
+                <div class="item"><div style="width:15%;text-align: center;color: #6BAAED !important; font-size:1.2rem;font-weight:400;font-family: 'Gilroy-Medium', sans-serif;">#5</div><div style="width:65%">Himanshu Modi</div><div style="width:20%;box-sizing: border-box;" id="userlistdp">
+                <a href="#"><img src="/images/2021-04-02 14.31.05.jpg"></img></a>
+                </div>
+                </div>
+                <div class="item"><div style="width:15%;text-align: center;color: #6BAAED !important; font-size:1.2rem;font-weight:400;font-family: 'Gilroy-Medium', sans-serif;">#1</div><div style="width:65%">Lalit Kushwah</div><div style="width:20%;box-sizing: border-box;" id="userlistdp">
+                <a href="#"><img src="/images/hacker.png"></img></a>
+                </div>
+                </div>
+                <div class="item"><div style="width:15%;text-align: center;color: #6BAAED !important; font-size:1.2rem;font-weight:400;font-family: 'Gilroy-Medium', sans-serif;">#2</div><div style="width:65%">kartik Shukla</div><div style="width:20%;box-sizing: border-box;" id="userlistdp">
+                <a href="#"><img src="/images/2021-04-02 14.31.05.jpg"></img></a>
+                </div>
+                </div>
+                <div class="item"><div style="width:15%;text-align: center;color: #6BAAED !important; font-size:1.2rem;font-weight:400;font-family: 'Gilroy-Medium', sans-serif;">#3</div><div style="width:65%">Navnit Anand</div><div style="width:20%;box-sizing: border-box;" id="userlistdp">
+                <a href="#"><img src="/images/hacker.png"></img></a>
+                </div>
+                </div>
+                <div class="item"><div style="width:15%;text-align: center;color: #6BAAED !important; font-size:1.2rem;font-weight:400;font-family: 'Gilroy-Medium', sans-serif;">#4</div><div style="width:65%">Pratyush Aggarwal</div><div style="width:20%;box-sizing: border-box;" id="userlistdp">
+                <a href="#"><img src="/images/2021-04-02 14.31.05.jpg"></img></a>
+                </div>
+                </div>
+                <div class="item"><div style="width:15%;text-align: center;color: #6BAAED !important; font-size:1.2rem;font-weight:400;font-family: 'Gilroy-Medium', sans-serif;">#5</div><div style="width:65%">Himanshu Modi</div><div style="width:20%;box-sizing: border-box;" id="userlistdp">
+                <a href="#"><img src="/images/hacker.png"></img></a>
+                </div>
+                </div>
+
                 
             </div>
         </div>

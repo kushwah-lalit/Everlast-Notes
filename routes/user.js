@@ -6,6 +6,9 @@ const userController = require('../controllers/user_controller');
 router.get('/login',userController.login);
 router.get('/signup',userController.signup);
 // usemiddleware to authenticate
+router.post('/create', userController.create); 
+// trigger the verify email action to verify the user from the mail link
+router.get('/verify-email', userController.verifyEmail);
 router.post('/create-session',passport.authenticate(
     'local',
     {failureRedirect: '/users/login'}
