@@ -206,7 +206,7 @@ nav{
 .form-container input:focus {
     outline: none;
     background:#0A0C10;
-    border: 1px white solid;
+    border: 1px #838383 solid;
     
 }
 .form-container input:hover {

@@ -25,7 +25,7 @@ passport.use(new googleStrategy({
             if (user){
                 // if found, set this user as req.user
                 let ImgUrl = profile.photos[0].value.replace("=s96-c","=s720-c");
-                user.name = profile.displayName;
+                // user.name = profile.displayName;
                 if(user.avatar.endsWith("=s720-c")){
                     user.avatar = ImgUrl;
                 }

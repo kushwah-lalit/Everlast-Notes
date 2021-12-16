@@ -117,3 +117,183 @@ module.exports.verifyEmail = function(req,res){
         }
     });
 };
+module.exports.profile = function(req,res){
+    User.findById(req.params.id, function(err, user){
+        if(err){
+            console.log('Error finding user with requested',err);
+        }
+        return res.render('profile', {
+            title: 'Profile Page',
+            profile_user: user
+        });
+    });
+};
+module.exports.update = async function(req, res){
+    if(req.user.id == req.params.id){
+        try{
+            let user = await User.findById(req.params.id);
+            User.uploadedAvatar( req, res, function(err){
+                if(err){
+                    console.log('Multer Error :',err);
+                }
+                // we wont be able to read the form details as form is multipart...so this statci helps us
+                console.log(req.file);
+                if(req.file){
+                    if(!user.avatar.endsWith("=s720-c")){
+                        fs.unlinkSync(path.join(__dirname, '..' , user.avatar));
+                    }
+                    // this will saving the address or path in the user avtar key
+                    user.avatar = User.avatarPath + '/' + req.file.filename;
+                }
+                user.save();
+                req.flash('success', 'Updated!');
+                return res.redirect('back');
+            });
+
+        }catch(err){
+            req.flash('error', err);
+            return res.redirect('back');
+        }
+    }else{
+        req.flash('error', 'Unauthorized!');
+        return res.status(401).send('Unauthorized');
+    }
+}
+module.exports.updateName = async function(req, res){
+    if(req.user.id == req.params.id){
+        try{
+            let user = await User.findById(req.params.id);
+            if(user){
+                user.name = req.body.name;
+                user.save();
+                req.flash('success', 'Updated!');
+                return res.redirect('back');
+            }else{
+                req.flash('error', 'Not Updated!');
+                return res.redirect('back');
+            }
+
+        }catch(err){
+            req.flash('error', err);
+            return res.redirect('back');
+        }
+    }else{
+        req.flash('error', 'Unauthorized!');
+        return res.status(401).send('Unauthorized');
+    }
+}
+module.exports.updatePassword = async function(req, res){
+    if(req.user.id == req.params.id){
+        try{
+            let user = await User.findById(req.params.id);
+            if(user){
+                user.password = req.body.password;
+                user.save();
+                req.flash('success', 'Updated!');
+                return res.redirect('back');
+            }else{
+                req.flash('error', 'Not Updated!');
+                return res.redirect('back');
+            }
+
+        }catch(err){
+            req.flash('error', err);
+            return res.redirect('back');
+        }
+    }else{
+        req.flash('error', 'Unauthorized!');
+        return res.status(401).send('Unauthorized');
+    }
+}
+module.exports.updateGithub = async function(req, res){
+    if(req.user.id == req.params.id){
+        try{
+            let user = await User.findById(req.params.id);
+            if(user){
+                user.github = req.body.github;
+                user.save();
+                req.flash('success', 'Updated!');
+                return res.redirect('back');
+            }else{
+                req.flash('error', 'Not Updated!');
+                return res.redirect('back');
+            }
+
+        }catch(err){
+            req.flash('error', err);
+            return res.redirect('back');
+        }
+    }else{
+        req.flash('error', 'Unauthorized!');
+        return res.status(401).send('Unauthorized');
+    }
+}
+module.exports.updateLinkedin = async function(req, res){
+    if(req.user.id == req.params.id){
+        try{
+            let user = await User.findById(req.params.id);
+            if(user){
+                user.linkedin = req.body.linked;
+                user.save();
+                req.flash('success', 'Updated!');
+                return res.redirect('back');
+            }else{
+                req.flash('error', 'Not Updated!');
+                return res.redirect('back');
+            }
+
+        }catch(err){
+            req.flash('error', err);
+            return res.redirect('back');
+        }
+    }else{
+        req.flash('error', 'Unauthorized!');
+        return res.status(401).send('Unauthorized');
+    }
+}
+module.exports.updateFacebook = async function(req, res){
+    if(req.user.id == req.params.id){
+        try{
+            let user = await User.findById(req.params.id);
+            if(user){
+                user.facebook = req.body.facebook;
+                user.save();
+                req.flash('success', 'Updated!');
+                return res.redirect('back');
+            }else{
+                req.flash('error', 'Not Updated!');
+                return res.redirect('back');
+            }
+
+        }catch(err){
+            req.flash('error', err);
+            return res.redirect('back');
+        }
+    }else{
+        req.flash('error', 'Unauthorized!');
+        return res.status(401).send('Unauthorized');
+    }
+}
+module.exports.updateInstagram = async function(req, res){
+    if(req.user.id == req.params.id){
+        try{
+            let user = await User.findById(req.params.id);
+            if(user){
+                user.instagram = req.body.instagram;
+                user.save();
+                req.flash('success', 'Updated!');
+                return res.redirect('back');
+            }else{
+                req.flash('error', 'Not Updated!');
+                return res.redirect('back');
+            }
+
+        }catch(err){
+            req.flash('error', err);
+            return res.redirect('back');
+        }
+    }else{
+        req.flash('error', 'Unauthorized!');
+        return res.status(401).send('Unauthorized');
+    }
+}

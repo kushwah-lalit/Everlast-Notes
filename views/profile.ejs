@@ -1,0 +1,127 @@
+<link rel="stylesheet" type="text/css" href="/css/profile.css">
+<div id="main-body">
+    <div id="menu">
+        <div id="list-menu">
+
+        <ul class="vertical-list">
+            <li style="margin-top:0rem !important;"><a href="/">Dashboard</a></li>
+            <li><a href="#" >Problems</a></li>
+            <li class="dropdown"><a href="#">Categories</a>
+            <div class="dropdown-content">
+            <a href="#">Recursion</a>
+            <a href="#">Linked List</a>
+            <a href="#">Stack</a>
+            <a href="#">Queue</a>
+            <a href="#">Tree</a>
+            <a href="#">Binary Tree</a>
+            <a href="#">BST</a>
+            <a href="#">Maps</a>
+            <a href="#">OOPs</a>
+            <a href="#">Prority Queue</a>
+            <a href="#">Trie</a>
+            <a href="#">DP</a>
+            <a href="#">Graph</a>
+            <a href="#">Backtracking</a>
+            <a href="#">Array</a>
+            <a href="#">String</a>
+            <a href="#">Bit Manipulation</a>
+            <a href="#">Pointers</a>
+            <a href="#">Mathematical</a>
+            <a href="#">Others</a>
+            </div>
+            </li>
+            <li><a href="#" >PDF Notes</a></li>
+            <li><a href="#" >Task list</a></li>
+            <li><a href="#" >Codes</a></li>
+            <li><a href="#">Notes</a></li>
+            <li><a href="/users/profile/<%=locals.user._id %>" class="highlighted">Profile Settings</a></li>
+        </ul>
+        </div>
+        <div id="btn-out">
+            <a href="/users/sign-out">Sign Out</a>
+        </div>
+        <div id="rights">
+            @Everlast Notes, All Rights Reserved
+        </div>
+
+    </div>
+    <div id="data">
+        <div id="pic">
+                <div id="profile" style="height:70%">
+                 <a href="#"><img style="width:100%;height:100%;border: 3px #838383 solid;" src="<%= profile_user.avatar%>"></img></a>
+                </div>
+                <div class="brick" style="width:70%;height:25%; flex-direction: column; box-sizing: border-box;padding: 1rem;"><div id="stat" style="width: 100%;text-align: center; font-size: 2.5rem;"><%= profile_user.name%></div><div id="topic" style="width: 100%;text-align: center; font-size: 1.3rem;font-style: italic;font-weight:400;"><%= profile_user.email%></div></div>
+        </div>
+        <div id="shortdata">
+        
+            <div id="toppers">
+                <div class="header"><div style="width:100%;text-align: center;">Account Details</div></div>
+                <div class="item"><div style="width:40%;color: #6BAAED !important; font-size:1.1rem;font-weight:400;font-family: 'Gilroy-Medium', sans-serif;">USERNAME</div><div style="width:60%;">Lalit Kushwah</div>
+                </div>
+                <div class="item"><div style="width:40%;color: #6BAAED !important; font-size:1.1rem;font-weight:400;font-family: 'Gilroy-Medium', sans-serif;">EMAIL ADDRESS</div><div style="width:60%">lalit241998@gmail.com</div>
+                </div>
+                <div class="item"><div style="width:40%;color: #6BAAED !important; font-size:1.1rem;font-weight:400;font-family: 'Gilroy-Medium', sans-serif;">FIRST LOGIN</div><div style="width:60%">24-05-2021</div>
+                </div>
+                <div class="item"><div style="width:40%;color: #6BAAED !important; font-size:1.1rem;font-weight:400;font-family: 'Gilroy-Medium', sans-serif;">RANK</div><div style="width:60%">#1</div>
+                </div>
+                <div class="item"><div style="width:40%;color: #6BAAED !important; font-size:1.1rem;font-weight:400;font-family: 'Gilroy-Medium', sans-serif;">PROBLEMS SOLVED</div><div style="width:60%">450</div>
+                </div>
+                <div class="item" style="justify-content: space-around;">
+                    <div style="display: flex;justify-content: space-around;width: 60%;" class="item">
+                    <div id="profile">
+                        <a href="<%= profile_user.github%>" target="_blank"><img style="background-color: white;" src="https://cdn-icons.flaticon.com/png/512/3128/premium/3128308.png?token=exp=1639693557~hmac=5aec2040ee7a0d3fd6a719a83c390124"></img></a>
+                     </div>
+                     <div id="profile">
+                        <a href="<%= profile_user.linkedin%>" target="_blank"><img  style="border:none; border-radius: 0px;" src="https://cdn-icons.flaticon.com/png/512/3536/premium/3536505.png?token=exp=1639692708~hmac=7282ee41c4a3f9fd3fcc582256db89a8"></img></a>
+                     </div>
+                     <div id="profile">
+                        <a href="<%= profile_user.facebook%>" target="_blank"><img  style="border:none; border-radius: 0px;" src="https://cdn-icons.flaticon.com/png/512/2504/premium/2504903.png?token=exp=1639692756~hmac=8199901e2a7e4dba2146bf3bd3a1b059"></img></a>
+                     </div>
+                     <div id="profile">
+                        <a href="<%= profile_user.instagram%>" target="_blank"><img style="border:none; border-radius: 0px;" src="https://cdn-icons-png.flaticon.com/512/1409/1409946.png"></img></a>
+                     </div>
+                     </div>
+                </div>
+
+                
+            </div>
+            <% if(locals.user._id == profile_user.id){ %>
+            <div id="toppers">
+                <div class="header" style="margin-bottom: 0px;"><div style="width:100%;text-align: center;">Update Account Details</div></div>
+                    <form class="item form-container" action="/users/update/<%= profile_user.id %>" method="POST" enctype="multipart/form-data">
+                    <input type="file" name="avatar" required>
+                    <button type="submit">Update Picture</button>
+                    </form>
+                    <form class="item form-container" action="/users/updateName/<%= profile_user.id %>" method="POST">
+                    <input type="text"  name="name" placeholder="New Username" required>
+                    <button type="submit" >Update Username</button>
+                    </form>
+                    <form class="item form-container" action="/users/updatePassword/<%= profile_user.id %>" method="POST">
+                    <input type="text"  name="password" placeholder="New Password" required>
+                    <button type="submit">Update Password</button>
+                    </form>
+                    <form class="item form-container" action="/users/updateGithub/<%= profile_user.id %>" method="POST">
+                        <input type="text"  name="github" placeholder="Github Account URL" required>
+                        <button type="submit">Update Github ID</button>
+                    </form>
+                    <form class="item form-container" action="/users/updateLinkedin/<%= profile_user.id %>" method="POST">
+                        <input type="text"  name="linked" placeholder="linkedin Account URL" required>
+                        <button type="submit">Update Linkedin ID</button>
+                    </form>
+                    <form class="item form-container" action="/users/updateFacebook/<%= profile_user.id %>" method="POST">
+                        <input type="text"  name="facebook" placeholder="Facebook Account URL" required>
+                        <button type="submit">Update Facebook ID</button>
+                    </form>
+                    <form class="item form-container" action="/users/updateInstagram/<%= profile_user.id %>" method="POST">
+                        <input type="text"  name="instagram" placeholder="Instagram Account URL" required>
+                        <button type="submit">Update Instagram ID</button>
+                    </form>
+            
+            </div>
+            <%}%>
+
+                
+            </div>
+        </div>
+    </div>
+</div>
