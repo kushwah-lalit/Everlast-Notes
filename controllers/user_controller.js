@@ -122,8 +122,10 @@ module.exports.profile = function(req,res){
         if(err){
             console.log('Error finding user with requested',err);
         }
+        console.log(user);
+        console.log(req.user);
         return res.render('profile', {
-            title: 'Profile Page',
+            title: `Profile | ${user.name}`,
             profile_user: user
         });
     });
