@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const sgMail = require('@sendgrid/mail');
 // sendgrid api key for the connection validation
-sgMail.setApiKey('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');
+sgMail.setApiKey('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');
 const crypto = require('crypto');
 module.exports.login = function(req,res){
     if (req.isAuthenticated()){
@@ -21,6 +21,58 @@ module.exports.signup = function(req,res){
         title:'Create Account'
     });
 };
+module.exports.forgotpassword = function(req,res){
+    if (req.isAuthenticated()){
+        return res.redirect('/');
+    }
+    return res.render('reset_password',{
+        title:'Forgot Password'
+    });
+};
+module.exports.resetpassword = function(req, res){
+    
+    User.findOne({email: req.body.email},async function(err,user){
+        if(err){
+            // console.log('Error while finding the user');
+            req.flash('error', err); 
+            console.log(`Error on searching user: forgot password stage::${err}`);
+            return;
+        }
+        if(user){
+            user.password = crypto.randomBytes(8).toString('hex');
+            user.save();
+            const msg = {
+                to: user.email,
+                from: {
+                    email:'mailer.everlastnotes@gmail.com',
+                    name:'Everlast Notes'
+                },
+                templateId: 'd-465d97b674e34474ba86a5bc48d6b2fa',
+                dynamic_template_data: {
+                subject:'Account Password Changed',
+                name:user.name,
+                password:user.password
+                },
+            }
+              try{
+                await sgMail.send(msg);
+                req.flash('success','Password Changed Successfully');
+                // mail send then bring back user to signin page
+                return res.redirect('/users/signup');
+              }catch(err){
+                  console.log(`Error on mail sendig : ${err}`);
+                  req.flash('error','Password Reset mail cannot be sent contact Admin');
+                //   else error in sending the mail then back to signup page
+                  return res.redirect('users/signup');
+
+              }            
+        }else{
+            console.log(`Email not sent as user does not exists`);
+            req.flash('error','Email not sent as user does not exists');
+            return res.redirect('/users/login');
+        }
+    });
+}
 // // sign in and create a session for the user
 module.exports.createSession = function(req, res){
     req.flash('success', 'Logged in Successfully');
@@ -59,17 +111,16 @@ module.exports.create = function(req, res){
                 }else{
                     // once inserted then trigger the sendgrid to send the mail
                     const msg = {
-                        to: user.email, // Change to your recipient
-                        from: 'projectmailer.tester@gmail.com', // Change to your verified sender
-                        subject: 'Welcome to Everlast Notes - Verify your Account',
-                        text: `Hello!! Thank You for registering on Everlast Notes.
-                        Please copy and paste the address below to verify your account.
-                        http://${req.headers.host}/verify-email?token=${user.emailToken}`,
-                        html: `<h1>Welcome to Everlast Notes - Verify your Account</h1>
-                        <h2>Hello!! Thank You for registering on Everlast Notes.</h2>
-                        <h3>Please click the below link to verify your account in order to continue using website services</h3>
-                        <a href="http://${req.headers.host}/users/verify-email?token=${user.emailToken}">Click Here to Verify Account</a>
-                        `,
+                        to: user.email,
+                        from: {
+                            email:'mailer.everlastnotes@gmail.com',
+                            name:'Everlast Notes'},
+                        templateId: 'd-26b2f9c532034dd786126919f9db2288',
+                        dynamic_template_data: {
+                        name:user.name,
+                        host:req.headers.host,
+                        emailToken:user.emailToken
+                        },
                       }
                       try{
                         await sgMail.send(msg);

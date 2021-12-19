@@ -5,6 +5,9 @@ console.log("Router Loaded");
 const userController = require('../controllers/user_controller');
 router.get('/login',userController.login);
 router.get('/signup',userController.signup);
+router.get('/forgot-password',userController.forgotpassword);
+router.post('/reset-password',userController.resetpassword);
+
 // usemiddleware to authenticate
 router.post('/create', userController.create); 
 // trigger the verify email action to verify the user from the mail link

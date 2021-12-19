@@ -1,0 +1,167 @@
+body{
+	margin: 0px;
+	background:url("/images/image.png"), #FFFFFF;
+	position:absolute;
+	background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+	background-repeat:no-repeat;
+}
+nav{
+	width: 100%;
+	height: 5rem;
+	display: flex;
+	box-sizing: border-box;
+	flex-direction:row;
+	align-items: center;
+	justify-content:space-between; 
+	position:fixed;
+}
+#right{
+	width: 20%;
+	margin-right:20rem ;
+}
+#left{
+	width: 20%;
+    margin-left:13rem ;
+}
+#img img{
+	min-width: 200px;
+	width:80%;
+}
+.TextinBlock{
+	font-family: Poppins;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 1.6rem;
+	line-height: 25px;
+	letter-spacing: 0.045em;
+
+	/* main text color */
+
+	color: #FFFFFF;
+}
+
+#social {
+  position: fixed;
+  top: 25%;
+  right: 0px;
+
+ 
+}
+
+#social .social-btn {
+  display: block;
+  padding: 14px 13px;
+
+}
+
+#social .social-img {
+  width: 23px;
+}
+
+#facebook {
+  background-color: #3b5998;
+}
+
+#facebook:hover {
+  background-color: #2d4373;
+}
+
+#linkedin {
+  background-color: #0077b5;
+}
+
+#linkedin:hover {
+  background-color: #104b9b;
+}
+
+#github {
+  background-color: white;
+}
+
+#github:hover {
+  background-color:#6e7781;
+}
+
+#instagram {
+  background-color: #f95347;
+}
+
+#instagram:hover {
+  background-color:#fb3423;
+}
+.content{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	width: 75%;
+	margin-left:15%;
+	margin-top:13rem;
+	text-align: center;
+}
+#top{
+	font-family: Poppins;
+	font-style: normal;
+	font-weight: 550;
+	font-size: 2rem;
+	line-height: 42px;
+	/* identical to box height */
+
+	letter-spacing: 0.045em;
+
+	/* main text color */
+
+	color: #FFFFFF;
+}
+#middle{
+	font-family: Poppins;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 2.7rem;
+	line-height: 72px;
+	text-align: center;
+	letter-spacing: 0.045em;
+
+	color: rgba(255, 255, 255, 0.7);
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+#loginbtn{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: rgba(255, 255, 255, 0.1);
+	border: 1.72537px solid rgba(255, 255, 255, 0.8);
+	box-sizing: border-box;
+	box-shadow: 0px 3.45075px 12.9403px rgba(0, 0, 0, 0.11);
+	border-radius:24px;
+	width: 289px;
+	height: 62px;
+}
+#loginbtn a{
+	font-family: Poppins;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 1rem;
+
+	/* identical to box height, or 19px */
+
+
+	color: #FFFFFF;
+
+	text-decoration: none;
+		transition-duration: 0.3s;
+	transition-timing-function: ease-out;
+
+}
+#loginbtn a:hover{
+	font-size: 1.1rem;
+	transition-duration: 0.3s;
+	transition-timing-function: ease-in-out;
+}
+#loginbtn img{
+	width: 32px;
+}
+
