@@ -1,0 +1,128 @@
+<link rel="stylesheet" type="text/css" href="/css/problems.css">
+<div id="main-body">
+    <div id="menu">
+<div id="list-menu">
+
+<ul class="vertical-list">
+    <li style="margin-top:0rem !important;"><a href="/">Dashboard</a></li>
+    <li><a href="/problem" class="highlighted">Problems</a></li>
+    <li class="dropdown"><a href="#">Categories</a>
+    <div class="dropdown-content">
+    <a href="/category/Recursion">Recursion</a>
+    <a href="/category/Linked+List">Linked List</a>
+    <a href="/category/Stack">Stack</a>
+    <a href="/category/Queue">Queue</a>
+    <a href="/category/Tree">Tree</a>
+    <a href="/category/Binary+Tree">Binary Tree</a>
+    <a href="/category/BST">BST</a>
+    <a href="/category/Maps">Maps</a>
+    <a href="/category/OOPs">OOPs</a>
+    <a href="/category/Prority+Queue">Prority Queue</a>
+    <a href="/category/Trie">Trie</a>
+    <a href="/category/DP">DP</a>
+    <a href="/category/Graph">Graph</a>
+    <a href="/category/Backtracking">Backtracking</a>
+    <a href="/category/Array">Array</a>
+    <a href="/category/String">String</a>
+    <a href="/category/Bit+Manipulation">Bit Manipulation</a>
+    <a href="/category/Pointers">Pointers</a>
+    <a href="/category/Mathematical">Mathematical</a>
+    <a href="/category/Others">Others</a>
+    </div>
+    </li>
+    <li><a href="#" >PDF Notes</a></li>
+    <li><a href="#" >Task list</a></li>
+    <li><a href="#" >Codes</a></li>
+    <li><a href="#">Notes</a></li>
+    <li><a href="/users/profile/<%=locals.user._id %>">Profile Settings</a></li>
+</ul>
+</div>
+<div id="btn-out">
+    <a href="/users/sign-out">Sign Out</a>
+</div>
+<div id="rights">
+    @Everlast Notes, All Rights Reserved
+</div>
+
+</div>
+    
+    <div id="data">
+        <% if(locals.user){%>
+        <form id="shortdata" action="/problem/create" method="post">
+            <input type="text"  name="name" placeholder="Problem Title" class="form-container" required>
+            <textarea type="text" name="description" placeholder="Learnings or any other Problem related information......" class="form-container" style ="height:8rem;" required></textarea>
+            <input type="url"  name="link" placeholder="Problem Practice URL" class="form-container" required>
+            <textarea type="text" name="code" placeholder="Paste Problem's solution Code" class="form-container" style ="height:8rem;" required></textarea>
+            <div id="lastrow">
+            <select type="text"  name="lang" class="form-container" style="width:20%" required>
+                <option disabled selected>Select Code language</option>
+                <option value="c">C</option>
+                <option value="cpp">C++</option>
+                <option value="java">Java</option>
+                <option value="python">Python</option>
+                <option value="javascript">JavaScript</option>
+            </select>
+            <select type="text"  name="topic" class="form-container" style="width:25%" required>
+                 <option disabled selected>Select Problem Topic</option>
+                 <option value="Recursion">Recursion</option>
+                 <option value="Linked List">Linked List</option>
+                 <option value="Stack">Stack</option>
+                 <option value="Queue">Queue</option>
+                 <option value="Tree">Tree</option>
+                 <option value="Binary Tree">Binary Tree</option>
+                 <option value="BST">BST</option>
+                 <option value="Maps">Maps</option>
+                 <option value="OOPs">OOPs</option>
+                 <option value="Prority Queue">Prority Queue</option>
+                 <option value="Trie">Trie</option>
+                 <option value="DP">DP</option>
+                 <option value="Graph">Graph</option>
+                 <option value="Backtracking">Backtracking</option>
+                 <option value="Array">Array</option>
+                 <option value="String">String</option>
+                 <option value="Bit Manipulation">Bit Manipulation</option>
+                 <option value="Pointers">Pointers</option>
+                 <option value="Mathematical">Mathematical</option>
+                 <option value="Others">Others</option>
+            </select>
+            <select type="text"  name="website" class="form-container" style="width:25%" required>
+                <option disabled selected>Select Problem's Platform</option>
+                <option value="GeeksforGeeks">GeeksforGeeks</option>
+                <option value="Leetcode">Leetcode</option>
+                <option value="HackerRank">HackerRank</option>
+                <option value="Codechef">Codechef</option>
+                <option value="Codeforces">Codeforces</option>
+                <option value="HackerEarth">HackerEarth</option>
+            </select>
+            <button type="submit" class="submit" style="width:15%;margin-left:10%;">Add Problem</button>
+        </div>
+        </form>
+        <%}%>
+        <div class="item">
+            <div>Problems Solved</div>
+            <select type="text"  name="lang" class="form-container" style="width:20%;background: transparent;" required>
+                <option disabled selected><i class="fas fa-filter">Sort By</i></option>
+                <option ><a href="#" >Latest first</a></option>
+                <option ><a href="#" >Latest Last</a></option>
+            </select>
+        </div>
+        <div id="listitems">
+            <% for(let problem of problems){%>
+                <div class="brick">
+                    <div id="name"><a href="/problem/view/<%= problem.id%>"><%= problem.name%></a></div>
+                    <div id="tags">
+                        <div id="tag" style="background-color:#F97600;"><%= problem.lang%></div>
+                        <div id="tag" style="background-color:#1570FF;"><%= problem.topic%></div>
+                        <div id="tag" style="background-color:#389810;"><%= problem.website%></div>
+                    </div>
+                    <div id="tools">
+                        <a href="<%= problem.link%>" target="_blank" style="color:#6BAAED"><i class="fas fa-laptop-code"></i></a>
+                        <a href="/problem/update/<%= problem.id%>"><i class="fas fa-pen-nib"></i></a>
+                        <a href="/problem/delete/<%= problem.id%>" id="delete"><i class="far fa-trash-alt"></i></a>
+                    </div>
+                </div>
+            <%}%>
+        </div>
+            
+    </div>
+</div>

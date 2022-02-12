@@ -192,7 +192,7 @@ module.exports.update = async function(req, res){
                 // we wont be able to read the form details as form is multipart...so this statci helps us
                 console.log(req.file);
                 if(req.file){
-                    if(!user.avatar.endsWith("=s720-c")){
+                    if(user.avatar.startsWith("/uploads")){
                         fs.unlinkSync(path.join(__dirname, '..' , user.avatar));
                     }
                     // this will saving the address or path in the user avtar key

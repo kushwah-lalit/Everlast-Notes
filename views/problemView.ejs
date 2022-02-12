@@ -1,0 +1,74 @@
+<link href="/css/prism.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="/css/problem_view.css">
+    <div id="main-body">
+        <div id="menu">
+    <div id="list-menu">
+
+    <ul class="vertical-list">
+        <li style="margin-top:0rem !important;"><a href="/">Dashboard</a></li>
+        <li><a href="/problem">Problems</a></li>
+        <li class="dropdown"><a href="#">Categories</a>
+        <div class="dropdown-content">
+        <a href="/category/Recursion">Recursion</a>
+        <a href="/category/Linked+List">Linked List</a>
+        <a href="/category/Stack">Stack</a>
+        <a href="/category/Queue">Queue</a>
+        <a href="/category/Tree">Tree</a>
+        <a href="/category/Binary+Tree">Binary Tree</a>
+        <a href="/category/BST">BST</a>
+        <a href="/category/Maps">Maps</a>
+        <a href="/category/OOPs">OOPs</a>
+        <a href="/category/Prority+Queue">Prority Queue</a>
+        <a href="/category/Trie">Trie</a>
+        <a href="/category/DP">DP</a>
+        <a href="/category/Graph">Graph</a>
+        <a href="/category/Backtracking">Backtracking</a>
+        <a href="/category/Array">Array</a>
+        <a href="/category/String">String</a>
+        <a href="/category/Bit+Manipulation">Bit Manipulation</a>
+        <a href="/category/Pointers">Pointers</a>
+        <a href="/category/Mathematical">Mathematical</a>
+        <a href="/category/Others">Others</a>
+        </div>
+        </li>
+        <li><a href="#" >PDF Notes</a></li>
+        <li><a href="#" >Task list</a></li>
+        <li><a href="#" >Codes</a></li>
+        <li><a href="#">Notes</a></li>
+        <li><a href="/users/profile/<%=locals.user._id %>">Profile Settings</a></li>
+    </ul>
+    </div>
+    <div id="btn-out">
+        <a href="/users/sign-out">Sign Out</a>
+    </div>
+    <div id="rights">
+        @Everlast Notes, All Rights Reserved
+    </div>
+
+</div>
+        
+        <div id="data">
+            <div id="shortdata">
+                <div class="form-container" style="font-family: 'Gilroy-Medium';padding:1.5rem; font-size:1.7rem;border-color: white;"><%= problem.name%></div>
+                <div id="lastrow">
+                <div id="tags">
+                        <div id="tag" style="background-color:#F97600;"><%= problem.lang%></div>
+                        <div id="tag" style="background-color:#1570FF;"><%= problem.topic%></div>
+                        <div id="tag" style="background-color:#389810;"><%= problem.website%></div>
+                </div>
+                <div id="tools">
+                        <a href="<%= problem.link%>" target="_blank" style="color:#6BAAED"><i class="fas fa-laptop-code"></i></a>
+                        <a href="/problem/update/<%= problem.id%>"><i class="fas fa-pen-nib"></i></a>
+                        <a href="/problem/delete/<%= problem.id%>" id="delete"><i class="far fa-trash-alt"></i></a>
+                </div>
+                </div>
+                <div class="form-container" style="text-align: left;"><%= problem.description%>
+                </div>
+                <div style="width: 100%;"><pre><code class="language-<%= problem.lang%> line-numbers show-language match-braces"><%= problem.code%> 
+                </code>
+                </pre>
+            </div>
+            </div>                    
+        </div>
+    </div>
+<script src="/js/prism.js"></script>

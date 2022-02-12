@@ -16,7 +16,6 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    // adding new filed
     avatar:{
         type:String,
         required:true
@@ -48,6 +47,37 @@ const userSchema = new mongoose.Schema({
     instagram:{
         type:String,
         default:"https://www.instagram.com/"
+    },
+    problems:{
+        type:Map,
+        of:{type: Number},
+        default:{
+            "Recursion":0,
+            "Linked List":0,
+            "Stack":0,
+            "Queue":0,
+            "Tree":0,
+            "Binary Tree":0,
+            "BST":0,
+            "Maps":0,
+            "OOPs":0,
+            "Prority Queue":0,
+            "Trie":0,
+            "DP":0,
+            "Graph":0,
+            "Backtracking":0,
+            "Array":0,
+            "String":0,
+            "Bit Manipulation":0,
+            "Pointers":0,
+            "Mathematical":0,
+            "Others":0
+        },
+        required:true
+    },
+    todos:{
+        type:Number,
+        default:0
     }
 },
 {

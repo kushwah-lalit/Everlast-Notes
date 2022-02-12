@@ -5,4 +5,6 @@ console.log("Router Loaded");
 const dashController = require('../controllers/dash_controller');
 router.get('/',passport.checkAuthentication,dashController.home);
 router.use('/users', require('./user'));
+router.use('/problem',require('./problem'));
+router.use('/category',require('./category'));
 module.exports = router;
