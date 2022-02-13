@@ -168,16 +168,16 @@ module.exports.verifyEmail = function(req,res){
         }
     });
 };
-module.exports.profile = function(req,res){
-    User.findById(req.params.id, function(err, user){
+module.exports.profile = async function(req,res){
+    User.findById(req.params.id,async function(err, user){
         if(err){
             console.log('Error finding user with requested',err);
         }
-        console.log(user);
-        console.log(req.user);
+        let rank = (((await User.find({},'email-_id').sort('-problemCount')).map(({_id}) => _id.toString()))).indexOf(user.id);
         return res.render('profile', {
             title: `Profile | ${user.name}`,
-            profile_user: user
+            profile_user: user,
+            rank:rank+1
         });
     });
 };

@@ -379,6 +379,10 @@ nav {
   /*	border-radius:24px;
 	padding:2rem;*/ }
 
+#listitems img {
+  width: 20%;
+  margin: auto; }
+
 .brick {
   box-sizing: border-box;
   width: 32.5%;
@@ -411,7 +415,10 @@ nav {
   line-height: 25px;
   /* identical to box height */
   letter-spacing: 0.045em;
-  text-align: center; }
+  text-align: left;
+  overflow-wrap: break-word;
+  overflow-y: auto;
+  overflow-x: auto; }
 
 #name a {
   color: rgba(255, 255, 255, 0.87);
@@ -422,7 +429,8 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  flex-wrap: column; }
+  flex-wrap: column;
+  padding-top: 0.2rem; }
 
 #tag {
   font-family: 'Gilroy-Light';

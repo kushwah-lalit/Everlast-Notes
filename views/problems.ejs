@@ -100,15 +100,18 @@
         <%}%>
         <div class="item">
             <div>Problems Solved</div>
-            <select type="text"  name="lang" class="form-container" style="width:20%;background: transparent;" required>
+            <select id="sel" type="text"  name="lang" class="form-container" style="width:20%;background: transparent;" required>
                 <option disabled selected><i class="fas fa-filter">Sort By</i></option>
-                <option ><a href="#" >Latest first</a></option>
-                <option ><a href="#" >Latest Last</a></option>
+                <option value="desc" ><a href="#" >Latest First</a></option>
+                <option value="asc" ><a href="#" >Latest Last</a></option>
             </select>
         </div>
-        <div id="listitems">
+        <div id="listitems" class="top-to-bottom">
+            <% if(!problems.length) {%>
+                <img src='https://svgshare.com/i/AXk.svg' title='shore-no-result' class="animate__animated animate__pulse" />
+            <%}%>
             <% for(let problem of problems){%>
-                <div class="brick">
+                <div class="brick animate__animated animate__fadeInUp">
                     <div id="name"><a href="/problem/view/<%= problem.id%>"><%= problem.name%></a></div>
                     <div id="tags">
                         <div id="tag" style="background-color:#F97600;"><%= problem.lang%></div>
@@ -126,3 +129,20 @@
             
     </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    var check="desc";
+    var select = document.querySelector('#sel');
+    select.addEventListener('change',function(){
+        if(check!==select.value){
+            check=select.value;
+            var parent = document.getElementsByClassName('top-to-bottom')[0],
+            divs = parent.children,
+            i = divs.length;
+
+            for (; i--;) {
+                parent.appendChild(divs[i])
+            }
+        }
+    });
+</script>

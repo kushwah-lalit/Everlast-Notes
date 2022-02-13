@@ -6,7 +6,7 @@ module.exports.showProblems = async function(req,res){
         console.log(cat);
         let problems = await Problem.find({author:req.user.id,topic:cat}).sort('-createdAt');
         return res.render('categories',{
-            title:req.params.topic,
+            title:cat,
             problems:problems
         });
     }catch(err){
