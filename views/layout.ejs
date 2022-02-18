@@ -12,11 +12,11 @@
 	<!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<!-- home style css -->
-	<link rel="stylesheet" type="text/css" href="/css/layout.css">
+    <% if(!title.startsWith('Everlast')&&!title.startsWith('Create')&&!title.startsWith('Forgot')){%>
+	    <link rel="stylesheet" type="text/css" href="/css/layout.css">
+    <%}%>
 	<style>
     @import url('https://fonts.googleapis.com/css?family=Poppins:400,700,900');
-    </style>
-    <style>
     @import url('http://fonts.cdnfonts.com/css/gilroy-bold');
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js"></script>
