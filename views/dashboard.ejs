@@ -4,10 +4,10 @@
         <div id="list-menu">
 
         <ul class="vertical-list">
-            <li style="margin-top:0rem !important;"><a href="/" class="highlighted">Dashboard</a></li>
-            <li><a href="/problem" >Problems</a></li>
-            <li class="dropdown"><a>Categories</a>
-            <div class="dropdown-content">
+            <li style="margin-top:0rem !important;"><a href="/" class="highlighted"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+            <li><a href="/problem" ><i class="fa-solid fa-laptop-code"></i> Problems</a></li>
+            <li onclick="showMenu()" style="cursor: pointer;"><a><i class="fa-solid fa-bars-staggered"></i> Categories</a>
+                <div class="dropdown-content" id="catList" style="user-select: none;">
             <a href="/category/Recursion">Recursion</a>
             <a href="/category/Linked+List">Linked List</a>
             <a href="/category/Stack">Stack</a>
@@ -30,11 +30,11 @@
             <a href="/category/Others">Others</a>
             </div>
             </li>
-            <li><a href="#" >PDF Notes</a></li>
-            <li><a href="#" >Task list</a></li>
-            <li><a href="#" >Codes</a></li>
-            <li><a href="#" >Notes</a></li>
-            <li><a href="/users/profile/<%=locals.user._id %>">Profile Settings</a></li>
+            <li><a href="#" ><i class="fa-brands fa-free-code-camp"></i> Contests</a></li>
+            <li><a href="#" ><i class="fa-solid fa-clipboard-list"></i> Task List</a></li>
+            <li><a href="#" ><i class="fa-solid fa-file-pdf"></i> PDF Notes</a></li>
+            <li><a href="#" > <i class="fa-solid fa-code"></i> Codes</a></li>
+            <li><a href="/users/profile/<%=locals.user._id %>"><i class="fa-solid fa-address-card"></i> Profile Settings</a></li>
         </ul>
         </div>
         <div id="btn-out">
@@ -58,14 +58,14 @@
             <div id="recents">
                 <div class="header"><div style="width:5%;text-align: center;">Sno.</div><div style="width:53%">Recently Solved Problems</div><div style="width:30%">Category</div><div style="width:12%"></div></div>
                 <% var i=1; for(problem of recents){%>
-                    <div class="item animate__animated animate__fadeInUp"><div style="width:5%;text-align: center;"><%= i++%>.</div><div style="width:53%" class="question"><a href="/problem/view/<%= problem.id%>"><%= problem.name%></a></div><div style="width:30%"><%= problem.topic%></div><div style="width:12%; display: flex; justify-content: space-around;"><a style="color:#6BAAED;" href="<%= problem.link%>" target="_blank"><i class="fas fa-laptop-code"></i></a>&nbsp<a  href="/problem/delete/<%= problem.id%>"style="color: rgba(255, 255, 255, 0.87);" id="del"><i class="fas fa-trash-alt"></i></a></div></div>
+                    <div class="item animate__animated animate__fadeInUp"><div style="width:5%;text-align: center;"><%= i++%>.</div><div style="width:53%" class="question"><a href="/problem/view/<%= problem.id%>"><%= problem.name%></a></div><div style="width:30%"><%= problem.topic%></div><div style="width:12%; display: flex; justify-content: space-around;"><a style="color:#6BAAED;" href="<%= problem.link%>" target="_blank"><i class="fa-solid fa-keyboard"></i></a>&nbsp<a  href="/problem/delete/<%= problem.id%>"style="color: rgba(255, 255, 255, 0.87);" id="del" onclick="alert('You deleted a solved problem!')"><i class="fas fa-trash-alt"></i></a></div></div>
                 <%}%>
 
             </div>
             <div id="toppers">
                 <div class="header"><div style="width:15%;text-align: center;">Rank</div><div style="width:65%">Top Performers</div><div style="width:20%"></div></div>
                 <% var i=1; for(person of toppers){%>
-                    <div class="item animate__animated animate__fadeInUp"><div style="width:15%;text-align: center;color: #6BAAED !important; font-size:1.2rem;font-weight:400;font-family: 'Gilroy-Medium', sans-serif;">#<%= i++%></div><div style="width:65%"><%= person.name%></div><div style="width:20%;box-sizing: border-box;" id="userlistdp">
+                    <div class="item animate__animated animate__fadeInUp"><div style="width:15%;text-align: center;color: #6BAAED !important; font-size:1.2rem;font-weight:400;font-family: 'Gilroy-Medium', sans-serif;">#<%= i++%></div><div style="width:65%" class="question"><a href="/users/profile/<%= person.id%>"><%= person.name%></a></div><div style="width:20%;box-sizing: border-box;" id="userlistdp">
                         <a href="/users/profile/<%= person.id%>"><img src="<%= person.avatar%>"></img></a>
                     </div>
                     </div>

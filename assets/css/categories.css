@@ -8,16 +8,72 @@ nav {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  position: fixed;
-  /*	border: 3px #262837 solid; */ }
+  justify-content: flex-start;
+  position: fixed; }
 
 #right {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
-  width: 10%; }
+  justify-content: space-between;
+  margin-left: 1%;
+  width: calc(83% - 64px);
+  /*border: 1px solid red;*/ }
+
+#profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center; }
+
+#search {
+  min-width: 400px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /*	border: 1px solid red;*/ }
+
+#search-box {
+  color: #838383;
+  padding: 0.6rem;
+  text-align: left;
+  width: 370px;
+  background: transparent;
+  border: 1.5px #838383 solid;
+  border-left: none;
+  box-sizing: border-box;
+  border-radius: 12px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: 0.045em;
+  font-family: 'Gilroy-Light'; }
+
+#search-box:focus {
+  outline: none;
+  background: #0A0C10;
+  border: 1.5px #838383 solid;
+  color: white;
+  border-left: none; }
+
+#search-btn {
+  color: #838383;
+  padding: 0.6rem;
+  text-align: left;
+  width: 25px;
+  background: transparent;
+  border: 1.5px #838383 solid;
+  border-right: none;
+  box-sizing: border-box;
+  border-radius: 12px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+  letter-spacing: 0.045em;
+  font-family: 'Gilroy-Light'; }
 
 #left {
   display: flex;
@@ -25,7 +81,7 @@ nav {
   align-items: center;
   justify-content: space-around;
   width: 16%;
-  /*	border: 3px #262837 solid; */
+  /*	border: 1px red solid;*/
   background: #171B21;
   height: 100%; }
 
@@ -131,7 +187,7 @@ nav {
   margin: none !important;
   padding: 12px 16px;
   display: block;
-  font-family: 'Gilroy-Light';
+  font-family: 'Gilroy-Light' !important;
   font-style: normal;
   font-weight: 500;
   font-size: 1rem !important;
@@ -144,16 +200,16 @@ nav {
   transition-timing-function: ease-in-out; }
 
 .dropdown-content a:hover {
-  background-color: black;
+  background-color: #171B21;
   color: white;
   transition-duration: 0.2s;
   transition-timing-function: ease-in-out; }
 
-.dropdown:hover .dropdown-content {
+/*.dropdown:hover .dropdown-content {
   display: block;
-  transition-duration: 0.2s;
-  transition-timing-function: ease-in-out; }
-
+        	transition-duration: 0.2s;
+	transition-timing-function: ease-in-out;
+}*/
 /**/
 /* Horizontal Lists */
 .vertical-list {

@@ -7,4 +7,5 @@ router.get('/',passport.checkAuthentication,dashController.home);
 router.use('/users', require('./user'));
 router.use('/problem',require('./problem'));
 router.use('/category',require('./category'));
+router.use('/search',require('./search'));
 module.exports = router;
