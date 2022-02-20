@@ -30,7 +30,7 @@
         <a href="/category/Others">Others</a>
         </div>
         </li>
-        <li><a href="#" ><i class="fa-brands fa-free-code-camp"></i> Contests</a></li>
+        <li><a href="/contests"><i class="fa-brands fa-free-code-camp"></i> Contests</a></li>
         <li><a href="#" ><i class="fa-solid fa-clipboard-list"></i> Task List</a></li>
         <li><a href="#" ><i class="fa-solid fa-file-pdf"></i> PDF Notes</a></li>
         <li><a href="#" > <i class="fa-solid fa-code"></i> Codes</a></li>
@@ -106,10 +106,20 @@
                 <option value="asc" ><a href="#" >Latest Last</a></option>
             </select>
         </div>
+        <% if(!problems.length) {%>
+            <div class="empty-state animate__animated animate__pulse">
+                <div class="empty-state__content">
+                  <div class="empty-state__icon">
+                    <img src="/images/search-result-not-found-2130361-1800925.png" alt="no-result-found">
+                  </div>
+                  <div class="empty-state__message">No Problems solved.</div>
+                  <div class="empty-state__help">
+                    Add a new problem from the above form.
+                  </div>
+                </div>
+            </div>
+        <%}%>
         <div id="listitems" class="top-to-bottom">
-            <% if(!problems.length) {%>
-                <img src='https://svgshare.com/i/AXk.svg' title='shore-no-result' class="animate__animated animate__pulse" />
-            <%}%>
             <% for(let problem of problems){%>
                 <div class="brick animate__animated animate__fadeInUp">
                     <div id="name"><a href="/problem/view/<%= problem.id%>"><%= problem.name%></a></div>

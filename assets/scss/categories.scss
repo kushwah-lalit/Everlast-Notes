@@ -223,7 +223,44 @@ padding:2rem;*/
 #delete:hover{
 	color: red !important;
 }
-
+// no result section
+.empty-state {
+	width: 100%;
+	margin-top:10%;
+  }
+  .empty-state__content {
+	padding: 48px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+  }
+  .empty-state__content .empty-state__icon {
+	width:30%;
+	display: flex;
+	border-radius: 50%;
+	justify-content: center;
+  }
+  .empty-state__content .empty-state__icon img {
+	width:100%;
+  }
+  .empty-state__content .empty-state__message {
+	color: #18A0FB;
+	font-size: 1.8rem;
+	font-weight: 500;
+	margin-top: 0.85rem;
+	font-family: 'Gilroy-Medium', sans-serif;
+	font-style: normal;
+	line-height: 25px;
+  }
+  .empty-state__content .empty-state__help {
+	color: #a2a5b9;
+	font-size: 1.2rem;
+	font-weight: 500;
+	margin-top: 0.85rem;
+	font-family: 'Gilroy-Medium', sans-serif;
+	font-style: normal;
+	line-height: 25px;
+  }
 
 
 
