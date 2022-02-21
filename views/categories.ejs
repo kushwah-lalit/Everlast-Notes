@@ -71,16 +71,16 @@
         <div id="listitems" class="top-to-bottom">
             <% for(let problem of problems){%>
                 <div class="brick animate__animated animate__fadeInUp">
-                    <div id="name"><a href="/problem/view/<%= problem.id%>"><%= problem.name%></a></div>
+                    <div id="name"><a href="/problem/view/<%= problem.id%>" data-toggle="tooltip" data-placement="top" title="View Problem"><%= problem.name%></a></div>
                     <div id="tags">
                         <div id="tag" style="background-color:#F97600;"><%= problem.lang%></div>
                         <div id="tag" style="background-color:#1570FF;"><%= problem.topic%></div>
                         <div id="tag" style="background-color:#389810;"><%= problem.website%></div>
                     </div>
                     <div id="tools">
-                        <a href="<%= problem.link%>" target="_blank" style="color:#6BAAED"><i class="fa-solid fa-keyboard"></i></a>
-                        <a href="/problem/update/<%= problem.id%>"><i class="fa-solid fa-pencil"></i></a>
-                        <a href="/problem/delete/<%= problem.id%>" id="delete" onclick="alert('You deleted a solved problem!')"><i class="far fa-trash-alt"></i></a>
+                        <a href="<%= problem.link%>" target="_blank" style="color:#6BAAED" target="_blank" data-toggle="tooltip" data-placement="top" title="Practice Problem"><i class="fa-solid fa-keyboard"></i></a>
+                        <a href="/problem/update/<%= problem.id%>" data-toggle="tooltip" data-placement="top" title="Update Problem Details"><i class="fa-solid fa-pencil"></i></a>
+                        <a href="/problem/delete/<%= problem.id%>" id="delete" onclick="alert('You deleted a solved problem!')" data-toggle="tooltip" data-placement="top" title="Delete Problem"><i class="far fa-trash-alt"></i></a>
                     </div>
                 </div>
             <%}%>

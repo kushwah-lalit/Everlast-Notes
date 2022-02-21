@@ -22,7 +22,7 @@
         </div>
         <div id="profile">
             <div id="notification" style="width:50px;">
-            <div style="color:white;font-size:1.3rem;cursor: pointer;" onclick="showNoty()"><i class="fa fa-bell" aria-hidden="true"></i></div>
+            <div style="color:white;font-size:1.3rem;cursor: pointer;" onclick="showNoty()" data-toggle="tooltip" data-placement="top" title="View Notifications"><i class="fa fa-bell" aria-hidden="true"></i></div>
             <div id="notificationResults" class="dropdown-content" style="top:5.8vh;left: 70%;right:140px;font-family: 'Gilroy-Medium', sans-serif;opacity:0.95;user-select: none;">
                 <a class="animate__animated animate__fadeIn">Great video my friend, I really wanted to learn how to implement this functionality.</a>
                 <a class="animate__animated animate__fadeIn">Great video my friend, I really wanted to learn how to implement this functionality.</a>
@@ -30,7 +30,7 @@
                 <a class="animate__animated animate__fadeIn">Great video my friend, I really wanted to learn how to implement this functionality.</a>
             </div>
             </div>
-           <a href="/users/profile/<%=locals.user._id %>"><img src="<%=locals.user.avatar%>"></img></a>
+           <a href="/users/profile/<%=locals.user._id %>" data-toggle="tooltip" data-placement="top" title="View Profile"><img src="<%=locals.user.avatar%>"></img></a>
         </div>
     </div>
 </nav>

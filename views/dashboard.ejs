@@ -58,15 +58,15 @@
             <div id="recents">
                 <div class="header"><div style="width:5%;text-align: center;">Sno.</div><div style="width:53%">Recently Solved Problems</div><div style="width:30%">Category</div><div style="width:12%"></div></div>
                 <% var i=1; for(problem of recents){%>
-                    <div class="item animate__animated animate__fadeInUp"><div style="width:5%;text-align: center;"><%= i++%>.</div><div style="width:53%" class="question"><a href="/problem/view/<%= problem.id%>"><%= problem.name%></a></div><div style="width:30%"><%= problem.topic%></div><div style="width:12%; display: flex; justify-content: space-around;"><a style="color:#6BAAED;" href="<%= problem.link%>" target="_blank"><i class="fa-solid fa-keyboard"></i></a>&nbsp<a  href="/problem/delete/<%= problem.id%>"style="color: rgba(255, 255, 255, 0.87);" id="del" onclick="alert('You deleted a solved problem!')"><i class="fas fa-trash-alt"></i></a></div></div>
+                    <div class="item animate__animated animate__fadeInUp"><div style="width:5%;text-align: center;"><%= i++%>.</div><div style="width:53%" class="question"><a href="/problem/view/<%= problem.id%>" data-toggle="tooltip" data-placement="top" title="View Problem"><%= problem.name%></a></div><div style="width:30%"><%= problem.topic%></div><div style="width:12%; display: flex; justify-content: space-around;"><a style="color:#6BAAED;" href="<%= problem.link%>" target="_blank" target="_blank" data-toggle="tooltip" data-placement="top" title="Practice Problem"><i class="fa-solid fa-keyboard"></i></a>&nbsp<a  href="/problem/delete/<%= problem.id%>"style="color: rgba(255, 255, 255, 0.87);" id="del" onclick="alert('You deleted a solved problem!')" data-toggle="tooltip" data-placement="top" title="Delete Problem"><i class="fas fa-trash-alt"></i></a></div></div>
                 <%}%>
 
             </div>
             <div id="toppers">
                 <div class="header"><div style="width:15%;text-align: center;">Rank</div><div style="width:65%">Top Performers</div><div style="width:20%"></div></div>
                 <% var i=1; for(person of toppers){%>
-                    <div class="item animate__animated animate__fadeInUp"><div style="width:15%;text-align: center;color: #6BAAED !important; font-size:1.2rem;font-weight:400;font-family: 'Gilroy-Medium', sans-serif;">#<%= i++%></div><div style="width:65%" class="question"><a href="/users/profile/<%= person.id%>"><%= person.name%></a></div><div style="width:20%;box-sizing: border-box;" id="userlistdp">
-                        <a href="/users/profile/<%= person.id%>"><img src="<%= person.avatar%>"></img></a>
+                    <div class="item animate__animated animate__fadeInUp"><div style="width:15%;text-align: center;color: #6BAAED !important; font-size:1.2rem;font-weight:400;font-family: 'Gilroy-Medium', sans-serif;">#<%= i++%></div><div style="width:65%" class="question"><a href="/users/profile/<%= person.id%>" data-toggle="tooltip" data-placement="top" title="View Profile"><%= person.name%></a></div><div style="width:20%;box-sizing: border-box;" id="userlistdp">
+                        <a href="/users/profile/<%= person.id%>" data-toggle="tooltip" data-placement="top" title="View Profile"><img src="<%= person.avatar%>"></img></a>
                     </div>
                     </div>
                 <%}%> 

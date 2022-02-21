@@ -256,6 +256,11 @@ nav{
     	transition-duration: 0.2s;
 	transition-timing-function: ease-in-out;
 }
+.vertical-list li i{
+	width:1.6rem;
+	text-align: center;
+	font-size: 1.3rem;
+}
 .vertical-list li a:hover{
 	color: white;
 	transition-duration: 0.2s;

@@ -221,4 +221,3 @@ function sortByDate(){
 //     }).appendTo('#fetchedList');
 //     sortBytime= !sortBytime;
 // }
-$('[data-toggle="tooltip"]').tooltip()

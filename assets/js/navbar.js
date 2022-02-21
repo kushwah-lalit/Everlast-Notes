@@ -38,7 +38,7 @@ function showNoty() {
                 return;   
             }
             payload.forEach((item) => {
-                Results.innerHTML += `<a class="animate__animated animate__fadeInUp" href="/problem/view/${item._id}">${item.name}</a>`;
+                Results.innerHTML += `<a class="animate__animated animate__fadeInUp" href="/problem/view/${item._id}" data-toggle="tooltip" data-placement="top" title="View Problem">${item.name}</a>`;
             });
         });
         return;
