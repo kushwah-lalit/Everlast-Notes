@@ -1,0 +1,108 @@
+<link rel="stylesheet" type="text/css" href="/css/documents.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/dateFormat-3.0.3.min.js"></script>
+<div id="main-body">
+    <div id="menu">
+        <div id="list-menu">
+            <ul class="vertical-list">
+                <li style="margin-top:0rem !important;"><a href="/"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+                <li><a href="/problem" ><i class="fa-solid fa-laptop-code"></i> Problems</a></li>
+                <li onclick="showMenu()" style="cursor: pointer;"><a><i class="fa-solid fa-bars-staggered"></i> Categories</a>
+                    <div class="dropdown-content" id="catList" style="user-select: none;">
+                <a href="/category/Recursion">Recursion</a>
+                <a href="/category/Linked+List">Linked List</a>
+                <a href="/category/Stack">Stack</a>
+                <a href="/category/Queue">Queue</a>
+                <a href="/category/Tree">Tree</a>
+                <a href="/category/Binary+Tree">Binary Tree</a>
+                <a href="/category/BST">BST</a>
+                <a href="/category/Maps">Maps</a>
+                <a href="/category/OOPs">OOPs</a>
+                <a href="/category/Prority+Queue">Prority Queue</a>
+                <a href="/category/Trie">Trie</a>
+                <a href="/category/DP">DP</a>
+                <a href="/category/Graph">Graph</a>
+                <a href="/category/Backtracking">Backtracking</a>
+                <a href="/category/Array">Array</a>
+                <a href="/category/String">String</a>
+                <a href="/category/Bit+Manipulation">Bit Manipulation</a>
+                <a href="/category/Pointers">Pointers</a>
+                <a href="/category/Mathematical">Mathematical</a>
+                <a href="/category/Others">Others</a>
+                </div>
+                </li>
+                <li><a href="/contests"><i class="fa-brands fa-free-code-camp"></i> Contests</a></li>
+                <li><a href="/documents" class="highlighted"><i class="fa-solid fa-file"></i> Documents</a></li>
+                <li><a href="#" ><i class="fa-solid fa-clipboard-list"></i> Task List</a></li>
+                <li><a href="#" > <i class="fa-solid fa-code"></i> Codes</a></li>
+                <li><a href="/users/profile/<%=locals.user._id %>"><i class="fa-solid fa-address-card"></i> Profile Settings</a></li>
+            </ul>
+        </div>
+        <div id="btn-out">
+            <a href="/users/sign-out">Sign Out</a>
+        </div>
+        <div id="rights">
+            @Everlast Notes, All Rights Reserved
+        </div>
+
+    </div>
+    <div id="data">
+        <form id="shortdata" action="/documents/upload" method="POST" enctype="multipart/form-data">
+            <input type="text"  name="name" placeholder="Enter File Name" class="form-container" required>
+            <div id="lastrow">
+            <select type="text"  id="select-upload" name="uploadmethod" class="form-container" style="width:18%" required>
+                <option disabled>Select File Upload Method</option>
+                <option value="Google Drive Link"  selected>Google Drive Link</option>
+                <option value="Local Storage">Browse and Upload</option>
+            </select>
+            <input type="url" id="file-input" name="doc" placeholder="Enter Publicly shareable Google Drive Link of file" style="width:55%;"  class="form-container" required>
+            <button type="submit" class="submit" style="width:15%;margin-left:10%;">Upload File</button>
+        </div>
+        </form>
+            <div id="recents">
+                <div class="header">
+                    <div style="width:5%"></div>
+                    <div style="width:40%;text-align:left;">Files Uploaded</div>
+                    <div style="width:25%" onclick="sortByDate()" data-toggle="tooltip" data-placement="top" title="Sort By Date">Uploaded On <i class="fa-solid fa-sort"></i></div>
+                    <div style="width:15%">Uploaded From</div>
+                    <div style="width:15%"></div>
+                </div>
+                <div id="fetchedList">
+                    <% if(!docs.length){%>
+                        <div class="empty-state">
+                            <div class="empty-state__content animate__animated animate__pulse">
+                              <div class="empty-state__icon">
+                                <img src="/images/search-result-not-found-2130361-1800925.png" alt="no-result-found">
+                              </div>
+                              <div class="empty-state__message">No Documents (Notes) uploaded yet.</div>
+                              <div class="empty-state__help">
+                                Start maintaining your documents or Study material files by the above upload option.
+                              </div>
+                            </div>
+                        </div>
+                    <%}%>
+                    <% for(let doc of docs){%>
+                        <div class="item animate__animated animate__fadeInUp">
+                            <div style="width:5%"><i class="fa-solid fa-file"></i></div>
+                            <div style="width:40%;text-align:left;"><%= doc.name%></div>
+                            <div style="width:25%"><%= new Date(doc.createdAt).toDateString()%></div>
+                            <%if(doc.uploadWay === "Google Drive Link"){%>
+                                <div style="width:15%;background-color:#1570FF;padding:0.4rem 0rem;border-radius:10px;">Google Drive Link</div>
+                            <%}else{%>
+                                <div style="width:15%;background-color:#F97600;padding:0.4rem 0rem;border-radius:10px;">Local Storage</div>
+                            <%}%>
+                            <div style="width:15%; display: flex;justify-content: space-around;">
+                                <a id="tool" style="color: rgba(214, 214, 214, 1);" data-toggle="tooltip" data-placement="top" title="Share File"><i class="fa-solid fa-share-nodes" onclick="showAndFill('<%= doc.name%>','<%= doc._id%>','<%= locals.user.id%>')"></i></a>
+                                <%if(doc.uploadWay === "Google Drive Link"){%>
+                                    <a id="tool" style="color: rgba(214, 214, 214, 1);" href="<%= doc.downloadLink%>" target="_blank" data-toggle="tooltip" data-placement="top" title="Download File"><i class="fa-solid fa-file-arrow-down"></i></a>
+                                <%}else{%>
+                                    <a id="tool" style="color: rgba(214, 214, 214, 1);" href="/documents/download/<%= doc._id%>" data-toggle="tooltip" data-placement="top" title="Download File"><i class="fa-solid fa-file-arrow-down"></i></a>
+                                <%}%>
+                                <a id="del" style="color: rgba(214, 214, 214, 1);" href="/documents/delete/<%= doc._id%>" data-toggle="tooltip" data-placement="top" title="Delete File"><i class="fa-regular fa-trash-can"></i></a>
+                            </div>
+                        </div>
+                    <%}%>
+            </div>
+    </div>
+</div>
+<script src="/js/documents.js"></script>

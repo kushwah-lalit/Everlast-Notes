@@ -4,4 +4,5 @@ const passport = require('passport');
 console.log("Router Loaded");
 const searchController = require('../controllers/search_controller');
 router.post('/problems',passport.checkAuthentication,searchController.searchProblems);
+router.post('/documents',passport.checkAuthentication,searchController.searchDocuments);
 module.exports = router;
