@@ -14,6 +14,14 @@
       x.style.display = "none";
     }
   }
+  function showOptions() {
+    var x = document.getElementById("platList");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
   function searchProblems(e){
     var Results = document.getElementById("searchResults");
     // allow only char and spaces

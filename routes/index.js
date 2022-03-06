@@ -9,6 +9,7 @@ router.get('/',passport.checkAuthentication,dashController.home);
 router.use('/users', require('./user'));
 router.use('/problem',require('./problem'));
 router.use('/category',require('./category'));
+router.use('/practice',require('./practice'));
 router.use('/search',require('./search'));
 router.get('/contests',passport.checkAuthentication,contestController.contestPage);
 router.use('/documents',require('./documents'));

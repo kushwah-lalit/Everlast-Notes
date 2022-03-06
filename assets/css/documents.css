@@ -247,4 +247,5 @@ input[type=file]::file-selector-button:hover {
   margin-top: 0.85rem;
   font-family: 'Gilroy-Medium', sans-serif;
   font-style: normal;
-  line-height: 25px; }
+  line-height: 25px;
+  text-align: center; }
