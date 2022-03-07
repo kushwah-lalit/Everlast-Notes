@@ -47,3 +47,10 @@ $('#platformFilter').on('change',function(){
         return;
     }
 });
+function sortByDate(){
+    let childrens = problemList.children();
+    let len = childrens.length;
+    for (; len--;) {
+        problemList.append(childrens[len])
+    }
+}
