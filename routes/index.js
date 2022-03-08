@@ -13,4 +13,5 @@ router.use('/practice',require('./practice'));
 router.use('/search',require('./search'));
 router.get('/contests',passport.checkAuthentication,contestController.contestPage);
 router.use('/documents',require('./documents'));
+router.use('/code',require('./code'));
 module.exports = router;

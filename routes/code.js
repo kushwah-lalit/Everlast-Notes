@@ -1,0 +1,12 @@
+const express = require('express');
+const router = express.Router();
+const passport = require('passport');
+console.log("Router Loaded");
+const codeCRUDController = require('../controllers/code_crud');
+router.get('/',passport.checkAuthentication,codeCRUDController.codePage);
+router.post('/create',passport.checkAuthentication,codeCRUDController.addCode);
+router.get('/update/:id', passport.checkAuthentication,codeCRUDController.updateCode);
+router.post('/update/saveChanges/:id', passport.checkAuthentication,codeCRUDController.saveChangesCode);
+router.get('/delete/:id', passport.checkAuthentication,codeCRUDController.deleteCode);
+router.get('/view/:id', passport.checkAuthentication,codeCRUDController.viewCode);
+module.exports = router;

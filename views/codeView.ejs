@@ -1,5 +1,5 @@
-<link href="/css/prism.css" rel="stylesheet" />
-<link rel="stylesheet" type="text/css" href="/css/problem_view.css">
+<link href="/css/prism_codes.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="/css/code_view.css">
     <div id="main-body">
         <div id="menu">
     <div id="list-menu">
@@ -60,26 +60,23 @@
         
     <div id="data">
             <div id="shortdata">
-                <div class="form-container" style="font-family: 'Gilroy-Medium';padding:1.5rem; font-size:1.7rem;border-color: white;"><%= problem.name%></div>
+                <div class="form-container" style="font-family: 'Gilroy-Medium';padding:1.5rem; font-size:1.7rem;border-color: white;"><%= code.name%></div>
                 <div id="lastrow">
                 <div id="tags">
-                        <div id="tag" style="background-color:#F97600;"><%= problem.lang%></div>
-                        <div id="tag" style="background-color:#1570FF;"><%= problem.topic%></div>
-                        <div id="tag" style="background-color:#389810;"><%= problem.website%></div>
+                        <div id="tag" style="background-color:#F97600;"><%= code.lang%></div>
                 </div>
                 <div id="tools">
-                        <a href="<%= problem.link%>" target="_blank" style="color:#6BAAED" target="_blank" data-toggle="tooltip" data-placement="top" title="Practice Problem"><i class="fa-solid fa-keyboard"></i></a>
-                        <a href="/problem/update/<%= problem.id%>" data-toggle="tooltip" data-placement="top" title="Update Problem Details"><i class="fa-solid fa-pencil"></i></a>
-                        <a href="/problem/delete/<%= problem.id%>" id="delete" onclick="alert('You deleted a solved problem!')" data-toggle="tooltip" data-placement="top" title="Delete Problem"><i class="far fa-trash-alt"></i></a>
+                        <a href="/code/update/<%= code.id%>" data-toggle="tooltip" data-placement="top" title="Update Code Details"><i class="fa-solid fa-pencil"></i></a>
+                        <a href="/code/delete/<%= code.id%>" id="delete" onclick="alert('You deleted a Code Snippet')" data-toggle="tooltip" data-placement="top" title="Delete Code Snippet"><i class="far fa-trash-alt"></i></a>
                 </div>
                 </div>
-                <div class="form-container" style="text-align: left;"><%= problem.description%>
+                <div class="form-container" style="text-align: left;"><%= code.description%>
                 </div>
-                <div style="width: 100%;"><pre><code class="language-<%= problem.lang%> line-numbers show-language match-braces"><%= problem.code%> 
+                <div style="width: 100%;"><pre><code class="language-<%= code.lang%> line-numbers show-language match-braces"><%= code.code%>
                 </code>
                 </pre>
             </div>
             </div>                    
         </div>
     </div>
-<script src="/js/prism.js"></script>
+<script src="/js/prism_codes.js"></script>

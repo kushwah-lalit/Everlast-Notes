@@ -1,12 +1,12 @@
-<link rel="stylesheet" type="text/css" href="/css/categories.css">
+<link rel="stylesheet" type="text/css" href="/css/codes.css">
 <div id="main-body">
     <div id="menu">
 <div id="list-menu">
 
     <ul class="vertical-list">
         <li style="margin-top:0rem !important;"><a href="/" ><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
-        <li><a href="/problem" ><i class="fa-solid fa-laptop-code"></i> Problems</a></li>
-        <li onclick="showMenu()" style="cursor: pointer;"><a class="highlighted"><i class="fa-solid fa-bars-staggered"></i> Categories</a>
+        <li><a href="/problem"><i class="fa-solid fa-laptop-code"></i> Problems</a></li>
+        <li onclick="showMenu()" style="cursor: pointer;"><a><i class="fa-solid fa-bars-staggered"></i> Categories</a>
             <div class="dropdown-content" id="catList" style="user-select: none;">
         <a href="/category/Recursion">Recursion</a>
         <a href="/category/Linked+List">Linked List</a>
@@ -44,7 +44,7 @@
         </li>
         <li><a href="/documents"><i class="fa-solid fa-file"></i> Documents</a></li>
         <li><a href="#" ><i class="fa-solid fa-clipboard-list"></i> Task List</a></li>
-        <li><a href="/code"> <i class="fa-solid fa-code"></i> Codes</a></li>
+        <li><a href="/code" class="highlighted"> <i class="fa-solid fa-code"></i> Codes</a></li>
         <li><a href="/users/profile/<%=locals.user._id %>"><i class="fa-solid fa-address-card"></i> Profile Settings</a></li>
     </ul>
 </div>
@@ -58,41 +58,87 @@
 </div>
     
     <div id="data">
+        <% if(locals.user){%>
+        <form id="shortdata" action="/code/create" method="post">
+            <input type="text"  name="name" placeholder="Code Snippet Title" class="form-container" required>
+            <textarea type="text" name="description" placeholder="Learnings or any other Code related information......" class="form-container" style ="height:8rem;" required></textarea>
+            <textarea type="text" name="code" placeholder="Paste here Code Snippet..." class="form-container" style ="height:8rem;" required></textarea>
+            <div id="lastrow">
+            <select type="text"  name="lang" class="form-container" style="width:20%" required>
+                <option disabled selected>Select Code language</option>
+                <option value="c">C</option>
+                <option value="cpp">C++</option>
+                <option value="css">CSS</option>
+                <option value="csharp">C#</option>
+                <option value="clojure">Clojure</option>
+                <option value="django">Django</option>
+                <option value="ejs">EJS</option>
+                <option value="elixir">Elixir</option>
+                <option value="erlang">Erlang</option>
+                <option value="go">GO</option>
+                <option value="markup">HTML</option>
+                <option value="json">JSON</option>
+                <option value="julia">Julia</option>
+                <option value="kotlin">Kotlin</option>
+                <option value="mongodb">MongoDB</option>
+                <option value="nasm">NASM</option>
+                <option value="objectivec">Objective-C</option>
+                <option value="perl">Perl</option>
+                <option value="php">PHP</option>
+                <option value="prolog">Prolog</option>
+                <option value="python">Python</option>
+                <option value="java">Java</option>
+                <option value="javascript">JavaScript</option>
+                <option value="jsx">React JSX</option>
+                <option value="ruby">Ruby</option>
+                <option value="sass">Sass</option>
+                <option value="scss">Scss</option>
+                <option value="scala">Scala</option>
+                <option value="scheme">Scheme</option>
+                <option value="sql">SQL</option>
+                <option value="swift">Swift</option>
+                <option value="typescript">TypeScript</option>
+                <option value="verilog">Verilog</option>
+                <option value="vhdl">VHDL</option>
+                <option value="vim">vim</option>
+            </select>
+            <button type="submit" class="submit" style="width:15%;margin-left:10%;">Add Code</button>
+        </div>
+        </form>
+        <%}%>
         <div class="item">
-            <div>Problems Solved</div>
+            <div>Code Snippets</div>
             <select id="sel" type="text"  name="lang" class="form-container" style="width:20%;background: transparent;" required>
                 <option disabled selected><i class="fas fa-filter">Sort By</i></option>
                 <option value="desc" ><a href="#" >Latest First</a></option>
                 <option value="asc" ><a href="#" >Latest Last</a></option>
             </select>
         </div>
-        <% if(!problems.length) {%>
+        <% if(!codes.length) {%>
             <div class="empty-state animate__animated animate__pulse">
                 <div class="empty-state__content">
                   <div class="empty-state__icon">
                     <img src="/images/search-result-not-found-2130361-1800925.png" alt="no-result-found">
                   </div>
-                  <div class="empty-state__message">No Problems solved here.</div>
+                  <div class="empty-state__message">No Code Snippets Added.</div>
                   <div class="empty-state__help">
-                    Add a new problem for this category from Problem Section.
+                    Start maintaining your codes on Everlast by using above form.
                   </div>
                 </div>
             </div>
         <%}%>
         <div id="listitems" class="top-to-bottom">
-            <% for(let problem of problems){%>
+            <% for(let code of codes){%>
                 <div class="brick animate__animated animate__fadeInUp">
-                    <div id="name"><a href="/problem/view/<%= problem.id%>" data-toggle="tooltip" data-placement="top" title="View Problem"><%= problem.name%></a></div>
+                    <div id="name"><a href="/code/view/<%= code.id%>" data-toggle="tooltip" data-placement="top" title="View Code"><%= code.name%></a></div>
                     <div id="tags">
-                        <div id="tag" style="background-color:#F97600;"><%= problem.lang%></div>
-                        <div id="tag" style="background-color:#1570FF;"><%= problem.topic%></div>
-                        <div id="tag" style="background-color:#389810;"><%= problem.website%></div>
+                        <div id="tag" style="background-color:#F97600;"><%= code.lang%></div>
+                        <div id="tools">
+                            <a href="/code/update/<%= code.id%>" data-toggle="tooltip" data-placement="top" title="Update Code Details"><i class="fa-solid fa-pencil"></i></a>
+                            <a href="/code/delete/<%= code.id%>" id="delete" onclick="alert('You deleted a Code Snippet!')" data-toggle="tooltip" data-placement="top" title="Delete Code"><i class="far fa-trash-alt"></i></a>
+                        </div>
                     </div>
-                    <div id="tools">
-                        <a href="<%= problem.link%>" target="_blank" style="color:#6BAAED" target="_blank" data-toggle="tooltip" data-placement="top" title="Practice Problem"><i class="fa-solid fa-keyboard"></i></a>
-                        <a href="/problem/update/<%= problem.id%>" data-toggle="tooltip" data-placement="top" title="Update Problem Details"><i class="fa-solid fa-pencil"></i></a>
-                        <a href="/problem/delete/<%= problem.id%>" id="delete" onclick="alert('You deleted a solved problem!')" data-toggle="tooltip" data-placement="top" title="Delete Problem"><i class="far fa-trash-alt"></i></a>
-                    </div>
+                    
                 </div>
             <%}%>
         </div>

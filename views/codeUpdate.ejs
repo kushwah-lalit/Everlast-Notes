@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="/css/problem_update.css">
+<link rel="stylesheet" type="text/css" href="/css/code_update.css">
 <div id="main-body">
     <div id="menu">
 <div id="list-menu">
@@ -59,55 +59,52 @@
     
     <div id="data">
          <div class="item">
-            <div><%= problem.name%></div>
+            <div><%= code.name%></div>
         </div>
-        <form id="shortdata" action="/problem/update/saveChanges/<%= problem.id%>" method="post">
-            <input type="text"  name="name" value="<%= problem.name%>" placeholder="Problem Title" class="form-container" required>
-            <textarea type="text" name="description" placeholder="Learnings or any other Problem related information......" class="form-container" style ="height:35%;" required><%= problem.description%></textarea>
-            <input type="url"  name="link" value="<%= problem.link%>" placeholder="Problem Practice URL" class="form-container" required>
-            <textarea type="text" name="code" placeholder="Paste Problem's solution Code" class="form-container" style ="height:35%;" required><%= problem.code%></textarea>
+        <form id="shortdata" action="/code/update/saveChanges/<%= code.id%>" method="post">
+            <input type="text"  name="name" value="<%= code.name%>" placeholder="Code Snippet Title" class="form-container" required>
+            <textarea type="text" name="description" placeholder="Learnings or any other Code related information......" class="form-container" style ="height:40%;" required><%= code.description%></textarea>
+            <textarea type="text" name="code" placeholder="Paste here Code Snippet.." class="form-container" style ="height:40%;" required><%= code.code%></textarea>
             <div id="lastrow">
             <select type="text"  name="lang" class="form-container" style="width:20%" required>
                 <option disabled selected>Select Code language</option>
                 <option value="c">C</option>
                 <option value="cpp">C++</option>
-                <option value="java">Java</option>
+                <option value="css">CSS</option>
+                <option value="csharp">C#</option>
+                <option value="clojure">Clojure</option>
+                <option value="django">Django</option>
+                <option value="ejs">EJS</option>
+                <option value="elixir">Elixir</option>
+                <option value="erlang">Erlang</option>
+                <option value="go">GO</option>
+                <option value="markup">HTML</option>
+                <option value="json">JSON</option>
+                <option value="julia">Julia</option>
+                <option value="kotlin">Kotlin</option>
+                <option value="mongodb">MongoDB</option>
+                <option value="nasm">NASM</option>
+                <option value="objectivec">Objective-C</option>
+                <option value="perl">Perl</option>
+                <option value="php">PHP</option>
+                <option value="prolog">Prolog</option>
                 <option value="python">Python</option>
+                <option value="java">Java</option>
                 <option value="javascript">JavaScript</option>
+                <option value="jsx">React JSX</option>
+                <option value="ruby">Ruby</option>
+                <option value="sass">Sass</option>
+                <option value="scss">Scss</option>
+                <option value="scala">Scala</option>
+                <option value="scheme">Scheme</option>
+                <option value="sql">SQL</option>
+                <option value="swift">Swift</option>
+                <option value="typescript">TypeScript</option>
+                <option value="verilog">Verilog</option>
+                <option value="vhdl">VHDL</option>
+                <option value="vim">vim</option>
             </select>
-            <select type="text"  name="topic" class="form-container" style="width:25%" required>
-                 <option disabled selected>Select Problem Topic</option>
-                 <option value="Recursion">Recursion</option>
-                 <option value="Linked List">Linked List</option>
-                 <option value="Stack">Stack</option>
-                 <option value="Queue">Queue</option>
-                 <option value="Tree">Tree</option>
-                 <option value="Binary Tree">Binary Tree</option>
-                 <option value="BST">BST</option>
-                 <option value="Maps">Maps</option>
-                 <option value="OOPs">OOPs</option>
-                 <option value="Prority Queue">Prority Queue</option>
-                 <option value="Trie">Trie</option>
-                 <option value="DP">DP</option>
-                 <option value="Graph">Graph</option>
-                 <option value="Backtracking">Backtracking</option>
-                 <option value="Array">Array</option>
-                 <option value="String">String</option>
-                 <option value="Bit Manipulation">Bit Manipulation</option>
-                 <option value="Pointers">Pointers</option>
-                 <option value="Mathematical">Mathematical</option>
-                 <option value="Others">Others</option>
-            </select>
-            <select type="text"  name="website" class="form-container" style="width:25%" required>
-                <option disabled selected>Select Problem's Platform</option>
-                <option value="GeeksforGeeks">GeeksforGeeks</option>
-                <option value="Leetcode">Leetcode</option>
-                <option value="HackerRank">HackerRank</option>
-                <option value="Codechef">Codechef</option>
-                <option value="Codeforces">Codeforces</option>
-                <option value="HackerEarth">HackerEarth</option>
-            </select>
-            <button type="submit" class="submit" style="width:15%;margin-left:10%;">Update Problem</button>
+            <button type="submit" class="submit" style="width:15%;margin-left:10%;">Update Code</button>
         </div>
         </form>                    
     </div>
