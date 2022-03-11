@@ -7,7 +7,7 @@
     <div id="right">
         <div id="search">
             <button id="search-btn" style="margin-left:5px;"><i class="fa fa-search" aria-hidden="true"></i></button>
-            <% if(title.startsWith("Todos")){%>
+            <% if(title.startsWith("Task")){%>
                 <input type="text" id="search-box" onkeyup="searchTasks(this)" placeholder="Search for tasks todo...">
             <%}else if(title.startsWith("Documents")){%>
                 <input type="text" id="search-box" onkeyup="searchFiles(this)" placeholder="Search for your uploaded Files...">

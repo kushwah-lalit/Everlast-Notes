@@ -1,0 +1,10 @@
+const express = require('express');
+const router = express.Router();
+const passport = require('passport');
+console.log("Router Loaded");
+const taskController = require('../controllers/task_controller');
+router.get('/',passport.checkAuthentication,taskController.taskPage);
+router.post('/create',passport.checkAuthentication,taskController.createTask);
+router.get('/delete/:id', passport.checkAuthentication,taskController.deleteTask);
+router.post('/deleteSelected',passport.checkAuthentication,taskController.deleteSelectedTasks);
+module.exports = router;

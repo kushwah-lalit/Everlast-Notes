@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const Problem = require('../models/problem');
+const Task =require('../models/task');
 module.exports.showProblems = async function(req,res){
     try{
         let problems;
@@ -76,6 +77,53 @@ module.exports.addToProblems = async function(req,res){
     }catch(err){
         req.flash('error', err);
         console.log('Problem AddToProblems :: Error :',err);
+        return res.redirect('back');
+    }
+};
+module.exports.addToTasks = async function(req,res){
+    try{
+        let problem = await Problem.findById(req.params.id);
+        if(problem){
+            User.findById(req.user.id,async function(err,user){
+                if(err){
+                    req.flash('error', err);
+                    console.log('User not found to problem :: Error :',err);
+                    return;
+                }
+                Task.create({
+                    name:'To Solve : '+problem.name,
+                    description:`Problem Details:
+
+Topic - ${problem.topic}
+Platform to Practice - ${problem.website}
+Problem Practice URL - ${problem.link}`,
+                    dueDate:new Date(new Date().setDate(new Date().getDate() + 7)),
+                    author:user
+                },async function(err,task){
+                    if(err){
+                        // console.log('Error while creating the user');
+                        req.flash('error', err);
+                        console.log('Task not created :: Error :',err);
+                        return;
+                    }else{
+                        req.flash('success','Task Successfully Added');
+                        console.log('Task Successfully Added: ',task);
+                        await user.todos++;
+                        await user.save();
+                        return res.redirect('/tasklist');
+                    }
+                });
+    
+            });
+        }else{
+            req.flash('error', err);
+            console.log('Problem does not exists :: Error :',err);
+            return res.redirect('back');
+        }
+        
+    }catch(err){
+        req.flash('error', err);
+        console.log('Problem AddToTasks :: Error :',err);
         return res.redirect('back');
     }
 };

@@ -5,4 +5,5 @@ console.log("Router Loaded");
 const practiceController = require('../controllers/practice_controller');
 router.get('/:platform', passport.checkAuthentication,practiceController.showProblems);
 router.get('/MarkAsDone/:id', passport.checkAuthentication,practiceController.addToProblems);
+router.get('/AddToTasks/:id', passport.checkAuthentication,practiceController.addToTasks);
 module.exports = router;

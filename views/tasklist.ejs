@@ -1,0 +1,110 @@
+<link rel="stylesheet" type="text/css" href="/css/tasks.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/dateFormat-3.0.3.min.js"></script>
+<div id="main-body">
+    <div id="menu">
+        <div id="list-menu">
+            <ul class="vertical-list">
+                <li style="margin-top:0rem !important;"><a href="/"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+                <li><a href="/problem" ><i class="fa-solid fa-laptop-code"></i> Problems</a></li>
+                <li onclick="showMenu()" style="cursor: pointer;"><a><i class="fa-solid fa-bars-staggered"></i> Categories</a>
+                    <div class="dropdown-content" id="catList" style="user-select: none;">
+                <a href="/category/Recursion">Recursion</a>
+                <a href="/category/Linked+List">Linked List</a>
+                <a href="/category/Stack">Stack</a>
+                <a href="/category/Queue">Queue</a>
+                <a href="/category/Tree">Tree</a>
+                <a href="/category/Binary+Tree">Binary Tree</a>
+                <a href="/category/BST">BST</a>
+                <a href="/category/Maps">Maps</a>
+                <a href="/category/OOPs">OOPs</a>
+                <a href="/category/Prority+Queue">Prority Queue</a>
+                <a href="/category/Trie">Trie</a>
+                <a href="/category/DP">DP</a>
+                <a href="/category/Graph">Graph</a>
+                <a href="/category/Backtracking">Backtracking</a>
+                <a href="/category/Array">Array</a>
+                <a href="/category/String">String</a>
+                <a href="/category/Bit+Manipulation">Bit Manipulation</a>
+                <a href="/category/Pointers">Pointers</a>
+                <a href="/category/Mathematical">Mathematical</a>
+                <a href="/category/Others">Others</a>
+                </div>
+                </li>
+                <li><a href="/contests"><i class="fa-brands fa-free-code-camp"></i> Contests</a></li>
+                <li onclick="showOptions()" style="cursor: pointer;"><a><i class="fa-solid fa-keyboard"></i> Practice</a>
+                    <div class="dropdown-content" id="platList" style="user-select: none; top:30%">
+                    <a href="/practice/all">All Platforms</a>
+                    <a href="/practice/Leetcode">Leetcode</a>
+                    <a href="/practice/GeeksforGeeks">GeeksforGeeks</a>
+                    <a href="/practice/Codechef">Codechef</a>
+                    <a href="/practice/Codeforces">Codeforces</a>
+                    <a href="/practice/HackerRank">HackerRank</a>
+                    <a href="/practice/HackerEarth">HackerEarth</a>
+                    </div>
+                </li>
+                <li><a href="/documents"><i class="fa-solid fa-file"></i> Documents</a></li>
+                <li><a href="/tasklist" class="highlighted"><i class="fa-solid fa-clipboard-list"></i> Task List</a></li>
+                <li><a href="/code"> <i class="fa-solid fa-code"></i> Codes</a></li>
+                <li><a href="/users/profile/<%=locals.user._id %>"><i class="fa-solid fa-address-card"></i> Profile Settings</a></li>
+            </ul>
+        </div>
+        <div id="btn-out">
+            <a href="/users/sign-out">Sign Out</a>
+        </div>
+        <div id="rights">
+            @Everlast Notes, All Rights Reserved
+        </div>
+
+    </div>
+    <div id="data">
+        <form id="shortdata" action="/tasklist/create" method="POST">
+            <input type="text"  name="name" placeholder="Enter Task Title.." class="form-container" required>
+            <textarea type="text" name="description" placeholder="Short description about the task todo..." class="form-container" style ="height:8rem;" required></textarea>
+            <div id="lastrow">
+            <input type="date" min="<%= (new Date(new Date().setDate(new Date().getDate() + 1))).toISOString().split('T')[0]%>" name="dueDate" class="form-container" style="width:18%;"  data-toggle="tooltip" data-placement="top" title="Due Date"required >
+            <button type="submit" class="submit" style="width:15%;margin-left:10%;">Add Task Todo</button>
+        </div>
+        </form>
+            <div id="recents">
+                <div class="header">
+                    <div style="width:5%" id="selectallbtn"><i style="cursor: pointer;" data-toggle="tooltip" data-placement="top" title="Select All" class="fa-solid fa-check-double"></i></div>
+                    <div style="width:40%;text-align:left;">Pending Tasks Todo</div>
+                    <div style="width:25%" onclick="sortByDate()" data-toggle="tooltip" data-placement="top" title="Arrange by due date">Due Date <i class="fa-solid fa-sort"></i></div>
+                    <div style="width:15%">Task Status</div>
+                    <div style="width:12%;" class="selected" data-toggle="tooltip" data-placement="top" title="Delete Selected Tasks" id="deleted-selected">Remove Checked</div>
+                </div>
+                <form id="fetchedList" action="/tasklist/deleteSelected" method="POST">
+                    <% if(!tasks.length){%>
+                        <div class="empty-state">
+                            <div class="empty-state__content animate__animated animate__pulse">
+                              <div class="empty-state__icon">
+                                <img src="/images/search-result-not-found-2130361-1800925.png" alt="no-result-found">
+                              </div>
+                              <div class="empty-state__message">Great! You don't seem to have any task todo as pending.</div>
+                              <div class="empty-state__help">
+                                Start adding your tasks todo from above form for better management of your works.
+                              </div>
+                            </div>
+                        </div>
+                    <%}%>
+                    <% for(let task of tasks){%>
+                        <div class="item animate__animated animate__fadeInUp" id="<%= task._id%>" data-name="<%=task.name%>" data-desc="<%=task.description%>">
+                            <div style="width:5%"><input type="checkbox" value="<%= task._id %>" name="task"></div>
+                            <div style="width:40%;text-align:left;" onclick="showAndFill('<%= task._id%>')" class="question" data-toggle="tooltip" data-placement="top" title="View Description"><a><%= task.name%></a></div>
+                            <div style="width:25%"><%= new Date(task.dueDate).toDateString()%></div>
+                            <% if((new Date()).getTime() > (new Date(task.dueDate)).getTime()){%>
+                                <div style="width:15%;background-color:#ff0100;padding:0.4rem 0rem;border-radius:10px;">Over Due</div> 
+                            <% }else if((new Date()).getTime() <= (new Date(task.dueDate)).getTime() && (new Date(new Date().setDate(new Date().getDate() + 5))).getTime() >= (new Date(task.dueDate)).getTime()){%>
+                                <div style="width:15%;background-color:#F97600;padding:0.4rem 0rem;border-radius:10px;">Urgent</div>
+                            <% }else{%>
+                                <div style="width:15%;background-color:#389810;padding:0.4rem 0rem;border-radius:10px;">Todo Soon</div>
+                            <%}%>
+                            <div style="width:15%; display: flex;justify-content: space-around;"><a id="tool" style="color: rgba(214, 214, 214, 1);" target="_blank" data-toggle="tooltip" data-placement="top" title="Add to calender" onclick="addToCalender('<%= task._id%>','<%= (new Date(task.createdAt)).toISOString()%>','<%= (new Date(task.dueDate)).toISOString()%>')"><i class="fa-solid fa-calendar-plus"></i></a> <a id="del" style="color: rgba(214, 214, 214, 1);" href="/tasklist/delete/<%= task._id%>"><i class="fa-regular fa-trash-can"></i></a></div>
+                        </div>
+                    <%}%>
+                 </form>
+       </div>
+    </div>
+</div>
+<script src="/js/tasks.js"></script>
