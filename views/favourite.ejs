@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="/css/practice.css">
+<link rel="stylesheet" type="text/css" href="/css/favourite.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <div id="main-body">
     <div id="menu">
@@ -30,7 +30,7 @@
                 <a href="/category/Others">Others</a>
                 </div>
                 </li>
-                <li onclick="showList()" style="cursor: pointer;"><a><i class="fa-solid fa-bookmark"></i> Favourites</a>
+                <li onclick="showList()" style="cursor: pointer;"><a class="highlighted"><i class="fa-solid fa-bookmark"></i> Favourites</a>
                     <div class="dropdown-content" id="siteList" style="user-select: none; top:25%">
                     <a href="/favourite/all">All Platforms</a>
                     <a href="/favourite/Leetcode">Leetcode</a>
@@ -42,7 +42,7 @@
                     </div>
                 </li>
                 <li><a href="/contests"><i class="fa-brands fa-free-code-camp"></i> Contests</a></li>
-                <li onclick="showOptions()" style="cursor: pointer;"><a class="highlighted"><i class="fa-solid fa-keyboard"></i> Practice</a>
+                <li onclick="showOptions()" style="cursor: pointer;"><a><i class="fa-solid fa-keyboard"></i> Practice</a>
                     <div class="dropdown-content" id="platList" style="user-select: none; top:30%">
                     <a href="/practice/all">All Platforms</a>
                     <a href="/practice/Leetcode">Leetcode</a>
@@ -69,7 +69,7 @@
     </div>
     <div id="data">
         <div class="toolbar">
-        <div>Practice Problems</div>
+        <div>Favourite Problems</div>
         <select id="platformFilter" type="text"  name="lang" class="form-container" style="width:20%;background: transparent;" required>
             <option disabled><i class="fas fa-filter">Select Topic</i></option>
             <option value="all" selected>All Topics</option>
@@ -97,11 +97,11 @@
         </div>
         <div id="recents">
             <div class="header">
-                <div style="width:10%">Platform</div>
+                <div style="width:8%">Platform</div>
                 <div style="width:40%;text-align: left;">Name of Problem</div>
-                <div style="width:18%;" onclick="sortByDate()" data-toggle="tooltip" data-placement="top" title="Order by Date">Posted On <i class="fa-solid fa-sort"></i></div>
+                <div style="width:18%;" onclick="sortByDate()" data-toggle="tooltip" data-placement="top" title="Order by Date">Solved On <i class="fa-solid fa-sort"></i></div>
                 <div style="width:17%">Problem Category</div>
-                <div style="width:15%"></div>
+                <div style="width:17%"></div>
             </div>
             <div id="fetchedList">
                 <% if(!problems.length){%>
@@ -110,29 +110,32 @@
                           <div class="empty-state__icon">
                             <img src="/images/search-result-not-found-2130361-1800925.png" alt="no-result-found">
                           </div>
-                          <div class="empty-state__message">No Problems Suggestion available now :(</div>
+                          <div class="empty-state__message">No Problems marked as favourite.</div>
                           <div class="empty-state__help">
-                            Checkout 'contests' section or visit coding platforms from right quick links.
+                            Starting adding your favourite problems from Problems section to Favourites.
                           </div>
                         </div>
                     </div>
                 <%}%>
                 <% for(let problem of problems){%>
                     <div class="item animate__animated animate__fadeInUp" data-topic="<%= problem.topic%>">
-                    <div style="width:10%;box-sizing: border-box;" id="userlistdp">
+                    <div style="width:8%;box-sizing: border-box;" id="userlistdp">
                         <a><img src="/images/platforms/<%= problem.website%>.png"></img></a>
                     </div>
-                    <div style="width:40%;text-align: left;" class="question"><a href="<%= problem.link%>" target="_blank" data-toggle="tooltip" data-placement="top" title="Practice Online"><%= problem.name%></a></div>
+                    <div style="width:40%;text-align: left;" class="question"><a href="/problem/view/<%= problem.id%>" data-toggle="tooltip" data-placement="top" title="View Problem"><%= problem.name%></a></div>
                     <div style="width:18%"><%= new Date(problem.createdAt).toDateString()%></div>
                     <div style="width:17%;background-color:#1570FF;padding:0.4rem 0rem;border-radius:10px;"><%= problem.topic%></div>
-                    <div style="width:15%; display: flex;justify-content: space-evenly;">
+                    <div style="width:17%; display: flex;justify-content: space-evenly;">
                         <a id="tool" href="<%= problem.link%>" target="_blank" style="color: rgba(214, 214, 214, 1);" data-toggle="tooltip" data-placement="top" title="Practice Online"><i class="fa-regular fa-keyboard"></i></a>
-                        <a id="tool" href="/practice/AddToTasks/<%=problem.id%>" style="color: rgba(214, 214, 214, 1);" data-toggle="tooltip" data-placement="top" title="Add to Todos"><i class="fa-solid fa-clipboard-list"></i></a>
-                        <a id="tool" href="/practice/MarkAsDone/<%=problem.id%>" style="color: rgba(214, 214, 214, 1);" data-toggle="tooltip" data-placement="top" title="Add to Problems [Mark as Done]"><i class="fa-solid fa-clipboard-check"></i></a>
+                        <a id="tool" href="/favourite/toggleLike/<%=problem.id%>" style="color: rgba(214, 214, 214, 1);" data-toggle="tooltip" data-placement="top" title="Unfavourite">
+                            <i class="fa-solid fa-bookmark"></i>   
+                        </a>
+                        <a id="tool" href="/problem/update/<%= problem.id%>" style="color: rgba(214, 214, 214, 1);" data-toggle="tooltip" data-placement="top" title="Update Problem Details"><i class="fa-solid fa-pencil"></i></a>
+                        <a id="del" href="/problem/delete/<%= problem.id%>"  style="color: rgba(214, 214, 214, 1);" onclick="alert('You deleted a solved problem!')" data-toggle="tooltip" data-placement="top" title="Delete Problem"><i class="far fa-trash-alt"></i></a>
                     </div>
                     </div>
                 <%}%>
         </div>        		
 </div>
 </div>
-<script src="/js/practice.js"></script>
+<script src="/js/favourite.js"></script>

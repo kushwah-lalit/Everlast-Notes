@@ -15,5 +15,6 @@ router.get('/contests',passport.checkAuthentication,contestController.contestPag
 router.use('/documents',require('./documents'));
 router.use('/code',require('./code'));
 router.use('/tasklist',require('./tasklist'));
+router.use('/favourite',require('./favourite'));
 router.get('*',notFoundController.notFound);
 module.exports = router;

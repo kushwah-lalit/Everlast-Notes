@@ -31,6 +31,10 @@ const postSchema = new mongoose.Schema({
     author:{
         type:  mongoose.Schema.Types.ObjectId,
         ref:'User'
+    },
+    favourite:{
+       type:Boolean,
+       default:false 
     } 
 },
 {

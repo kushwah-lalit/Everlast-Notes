@@ -1,0 +1,186 @@
+#recents{
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content: space-around;
+    width:100%;
+    box-sizing: border-box;
+    background-color:#171B21;
+    border-radius:24px;
+    padding:0.8rem;
+  }
+  #fetchedList{
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    width:100%;
+    max-height:77vh;
+    overflow-y: auto;
+  }
+  .header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:flex-start;
+    width: 98%;
+    background-color: #0A0C10;
+    border-radius: 35px;
+    box-sizing: border-box;
+  /*  padding: 2rem;*/
+    margin-bottom:0.5rem;
+  /*  border: 1px solid red;*/
+  
+  }
+  .header div{
+    font-family: 'Gilroy-Light', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.1rem;
+    line-height: 19px;
+    letter-spacing: 0.045em;
+    color:  #6BAAED;
+    padding:1rem 1.8rem;
+    text-align: center;
+  /*    border: 1px solid red;*/
+      box-sizing: border-box;
+  }
+  .item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:flex-start;
+    width: 98%;
+  /*  background-color: #0A0C10;*/
+    /*border-radius: 35px;*/
+    box-sizing: border-box;
+  /*  padding: 2rem;*/
+  /*  border: 1px solid red;*/
+  }
+  .item div{
+    font-family: 'Gilroy-Light', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 19px;
+  /* identical to box height */
+  
+  letter-spacing: 0.045em;
+  
+    color: rgba(255, 255, 255, 0.87);
+    padding:1rem 2rem;
+    text-align: center;
+  /*    border: 1px solid red;*/
+        box-sizing: border-box;
+  }
+  .toolbar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-between;
+    width: 100%;
+    margin-bottom:0.5rem;
+  }
+  .toolbar div{
+    font-family: 'Gilroy-Medium', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 19px;
+    letter-spacing: 0.045em;
+    color: rgba(255, 255, 255, 0.87);
+    padding:1rem 2rem;
+    text-align: center;
+  }
+  #del i:hover{
+    color:red;
+    font-size: 1.1rem;
+    transition-duration: 2sec;
+    transition-timing-function: ease-in-out;
+  }
+  #tool i:hover{
+    color:#6BAAED;
+    font-size: 1.1rem;
+    transition-duration: 2sec;
+    transition-timing-function: ease-in-out;
+  }
+  .question a{
+    color:rgba(255, 255, 255, 0.87);
+    text-decoration: none;
+  
+  }
+  .question a:hover{
+    color:#838383;
+  
+  }
+  #userlistdp img{
+    width:2.2rem;
+    height:2.2rem;
+    border-radius:7px; 
+    border: 1px #0A0C10 solid;
+      padding: 1px;
+      background-color: white;
+  }
+  #userlistdp {
+    padding:0.32rem;
+    box-sizing: border-box;
+  }
+  .form-container{
+  color: #838383;
+  padding: 0.8rem;
+  padding-left:1.2rem ;
+  width:100%;
+  background: #171B21;
+  border: 2px solid #363640;
+  box-sizing: border-box;
+  border-radius: 17px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: 0.045em;
+  font-family: 'Gilroy-Medium';
+  margin-top:0.5rem;
+  margin-bottom:0.5rem;
+  }
+  .form-container:focus {
+      outline: none; 
+  }
+  // no result section
+  .empty-state {
+    width:60%;
+    margin: auto;
+    }
+    .empty-state__content {
+    padding: 48px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    }
+    .empty-state__content .empty-state__icon {
+    width:35%;
+    display: flex;
+    border-radius: 50%;
+    justify-content: center;
+    }
+    .empty-state__content .empty-state__icon img {
+    width:100%;
+    }
+    .empty-state__content .empty-state__message {
+    color: #18A0FB;
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-top: 0.85rem;
+    font-family: 'Gilroy-Medium', sans-serif;
+    font-style: normal;
+    line-height: 25px;
+    }
+    .empty-state__content .empty-state__help {
+    color: #a2a5b9;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-top: 0.85rem;
+    font-family: 'Gilroy-Medium', sans-serif;
+    font-style: normal;
+    line-height: 25px;
+    text-align: center;
+    }
