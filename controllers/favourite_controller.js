@@ -23,11 +23,25 @@ module.exports.showProblems = async function(req,res){
 };
 module.exports.toggleFavourite = async function(req,res){
     try{
-        let problem = await Problem.findById(req.params.id);
+        let problem = await Problem.findById(req.params.id).populate('author');
         if(problem){
-            problem.favourite = !problem.favourite;
-            await problem.save();
-            return res.redirect('back');
+            if(problem.author.id == req.user.id){
+                problem.favourite = !problem.favourite;
+                await problem.save();
+                if (req.xhr){
+                    return res.status(200).json({
+                        data: {
+                            problem_id: req.params.id
+                        },
+                        message: "Post deleted"
+                    });
+                }
+                return res.redirect('back');
+            }else{
+                req.flash('error', err);
+                console.log('Problem favourite access denied :: Error :',err);
+                return res.redirect('back');
+            }
         }else{
             req.flash('error', err);
             console.log('Problem does not exists :: Error :',err);

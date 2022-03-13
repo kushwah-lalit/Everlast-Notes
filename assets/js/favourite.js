@@ -54,3 +54,30 @@ function sortByDate(){
         problemList.append(childrens[len])
     }
 }
+
+function toggleAndRemove(link){
+    $.ajax({
+        type: 'get',
+        url: link,
+        success: function(data){
+            $(`#${data.data.problem_id}`).remove();
+            if(problemList.children().length==0){
+                problemList.append(`
+                    <div class="empty-state">
+                    <div class="empty-state__content animate__animated animate__pulse">
+                    <div class="empty-state__icon">
+                        <img src="/images/search-result-not-found-2130361-1800925.png" alt="no-result-found">
+                    </div>
+                    <div class="empty-state__message">No Problems marked as favourite.</div>
+                    <div class="empty-state__help">
+                        Starting adding your favourite problems from Problems section to Favourites.
+                    </div>
+                    </div>
+                </div>`);
+            }
+            return;
+        },error: function(error){
+            console.log(error.responseText);
+        }
+    });
+}

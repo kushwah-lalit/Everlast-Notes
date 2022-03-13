@@ -101,11 +101,11 @@
                     </div>
                     <div id="tools">
                         <a href="<%= problem.link%>" target="_blank" style="color:#6BAAED" target="_blank" data-toggle="tooltip" data-placement="top" title="Practice Problem"><i class="fa-solid fa-keyboard"></i></a>
-                        <a href="/favourite/toggleLike/<%=problem.id%>" data-toggle="tooltip" data-placement="top" title="Favourite | Unfavourite">
+                        <a onclick="toggleBookmark('/favourite/toggleLike/<%=problem.id%>')" data-toggle="tooltip" data-placement="top" title="Favourite | Unfavourite">
                             <% if(problem.favourite){%>
-                                <i class="fa-solid fa-bookmark"></i>
+                                <i id="<%= problem.id%>" class="fa-solid fa-bookmark"></i>
                             <%}else{%>
-                                <i class="fa-regular fa-bookmark"></i>
+                                <i id="<%= problem.id%>" class="fa-regular fa-bookmark"></i>
                             <%}%>    
                         </a>
                         <a href="/problem/update/<%= problem.id%>" data-toggle="tooltip" data-placement="top" title="Update Problem Details"><i class="fa-solid fa-pencil"></i></a>
@@ -118,6 +118,7 @@
     </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/js/bookmark.js"></script>
 <script>
     var check="desc";
     var select = document.querySelector('#sel');

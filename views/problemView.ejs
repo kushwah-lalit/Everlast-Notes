@@ -80,11 +80,11 @@
                 </div>
                 <div id="tools">
                         <a href="<%= problem.link%>" target="_blank" style="color:#6BAAED" target="_blank" data-toggle="tooltip" data-placement="top" title="Practice Problem"><i class="fa-solid fa-keyboard"></i></a>
-                        <a href="/favourite/toggleLike/<%=problem.id%>" data-toggle="tooltip" data-placement="top" title="Favourite | Unfavourite">
+                        <a onclick="toggleBookmark('/favourite/toggleLike/<%=problem.id%>')" data-toggle="tooltip" data-placement="top" title="Favourite | Unfavourite">
                             <% if(problem.favourite){%>
-                                <i class="fa-solid fa-bookmark"></i>
+                                <i id="<%= problem.id%>" class="fa-solid fa-bookmark"></i>
                             <%}else{%>
-                                <i class="fa-regular fa-bookmark"></i>
+                                <i id="<%= problem.id%>" class="fa-regular fa-bookmark"></i>
                             <%}%>    
                         </a>
                         <a href="/problem/update/<%= problem.id%>" data-toggle="tooltip" data-placement="top" title="Update Problem Details"><i class="fa-solid fa-pencil"></i></a>
@@ -101,3 +101,4 @@
         </div>
     </div>
 <script src="/js/prism.js"></script>
+<script src="/js/bookmark.js"></script>
