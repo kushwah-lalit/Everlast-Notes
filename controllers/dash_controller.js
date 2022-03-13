@@ -1,5 +1,6 @@
 const User =require('../models/user');
 const Problem =require('../models/problem');
+const bellData = require('./bell_controller');
 module.exports.home = function(req,res){
     User.findById(req.user.id,async function(err, user){
         if(err){
@@ -14,13 +15,15 @@ module.exports.home = function(req,res){
             chartData.push(val);
         }
         console.log(chartData);
+        let noty = await bellData.taskData(req.user.id);
         return res.render('dashboard', {
             title: `Dashboard | ${user.name}`,
             user,
             rank:rank+1,
             toppers,
             recents,
-            chartData
+            chartData,
+            noty:noty
         });
     });
 };

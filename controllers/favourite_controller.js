@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const Problem = require('../models/problem');
+const bellData = require('./bell_controller');
 module.exports.showProblems = async function(req,res){
     try{
         let problems;
@@ -8,9 +9,11 @@ module.exports.showProblems = async function(req,res){
         }else{
             problems = await Problem.find({author:req.user.id,favourite: true,website:req.params.platform}).sort('-createdAt');
         }
+        let noty = await bellData.taskData(req.user.id);
         return res.render('favourite',{
             title:'Favourites',
-            problems:problems
+            problems:problems,
+            noty:noty
         });
     }catch(err){
         req.flash('error', err);

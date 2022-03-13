@@ -1,9 +1,11 @@
 const User = require('../models/user');
 const Problem = require('../models/problem');
 const Task =require('../models/task');
+const bellData = require('./bell_controller');
 module.exports.showProblems = async function(req,res){
     try{
         let problems;
+        let noty = await bellData.taskData(req.user.id);
         if(req.params.platform === "all"){
             problems = await Problem.find({author:{ $ne: req.user.id }}).sort('createdAt');
         }else{
@@ -20,7 +22,8 @@ module.exports.showProblems = async function(req,res){
         console.log('data',arrayUniqueByKey);
         return res.render('practice',{
             title:'Practice',
-            problems:arrayUniqueByKey
+            problems:arrayUniqueByKey,
+            noty:noty
         });
     }catch(err){
         req.flash('error', err);

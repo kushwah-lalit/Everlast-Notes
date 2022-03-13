@@ -1,11 +1,14 @@
 const User =require('../models/user');
 const Task =require('../models/task');
+const bellData = require('./bell_controller');
 module.exports.taskPage = async function(req,res){
     try{
         let tasks = await Task.find({author:req.user.id}).sort('dueDate');
+        let noty = await bellData.taskData(req.user.id);
         return res.render('tasklist',{
             title:'Task Todo',
-            tasks:tasks
+            tasks:tasks,
+            noty:noty
         });
     }catch(err){
         req.flash('error', err);

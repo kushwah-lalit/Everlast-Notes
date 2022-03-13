@@ -1,11 +1,14 @@
 const User =require('../models/user');
 const Code =require('../models/code');
+const bellData = require('./bell_controller');
 module.exports.codePage = async function(req,res){
     try{
         let Codes = await Code.find({author:req.user.id}).sort('-createdAt');
+        let noty = await bellData.taskData(req.user.id);
         return res.render('codes',{
             title:'Code Snippets',
-            codes:Codes
+            codes:Codes,
+            noty:noty
         });
     }catch(err){
         req.flash('error', err);
@@ -43,11 +46,13 @@ module.exports.addCode = async function(req, res){
 module.exports.viewCode = async function(req, res){
     try{
         let code = await Code.findById(req.params.id).populate('author');
+        let noty = await bellData.taskData(req.user.id);
         if(code){
             if(code.author.id == req.user.id){
                 return res.render('codeView',{
                     title:'Code: ' + code.name,
-                    code:code
+                    code:code,
+                    noty:noty
                 });
             }else{
                 req.flash('error', err);
@@ -94,11 +99,13 @@ module.exports.deleteCode = async function(req, res){
 module.exports.updateCode = async function(req, res){
     try{
         let code = await Code.findById(req.params.id).populate('author');
+        let noty = await bellData.taskData(req.user.id);
         if(code){
             if(code.author.id == req.user.id){
                 return res.render('codeUpdate',{
                     title:'Code: ' + code.name,
-                    code:code
+                    code:code,
+                    noty:noty
                 });
             }else{
                 req.flash('error', err);

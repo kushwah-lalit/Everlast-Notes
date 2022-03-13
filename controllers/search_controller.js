@@ -3,6 +3,7 @@ const Problem =require('../models/problem');
 const Document =require('../models/document');
 const Code =require('../models/code');
 const Task =require('../models/task');
+const bellData = require('./bell_controller');
 module.exports.searchProblems = async function(req,res){
     let payload = req.body.payload.trim();
     // console.log(payload);

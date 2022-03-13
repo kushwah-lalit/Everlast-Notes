@@ -5,6 +5,7 @@ const sgMail = require('@sendgrid/mail');
 // sendgrid api key for the connection validation
 sgMail.setApiKey('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');
 const crypto = require('crypto');
+const bellData = require('./bell_controller');
 module.exports.login = function(req,res){
     if (req.isAuthenticated()){
         return res.redirect('/');
@@ -174,10 +175,12 @@ module.exports.profile = async function(req,res){
             console.log('Error finding user with requested',err);
         }
         let rank = (((await User.find({},'email-_id').sort('-problemCount')).map(({_id}) => _id.toString()))).indexOf(user.id);
+        let noty = await bellData.taskData(req.user.id);
         return res.render('profile', {
             title: `Profile | ${user.name}`,
             profile_user: user,
-            rank:rank+1
+            rank:rank+1,
+            noty:noty
         });
     });
 };

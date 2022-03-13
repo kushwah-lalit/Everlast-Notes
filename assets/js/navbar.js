@@ -1,7 +1,9 @@
   function showNoty() {
     var x = document.getElementById("notificationResults");
+    var bell = document.getElementById("bell");
     if (x.style.display === "none") {
       x.style.display = "block";
+      bell.style.color = "#838383";
     } else {
       x.style.display = "none";
     }

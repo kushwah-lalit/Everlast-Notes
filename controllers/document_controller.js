@@ -5,12 +5,15 @@ const path = require('path');
 const sgMail = require('@sendgrid/mail');
 // sendgrid api key for the connection validation
 sgMail.setApiKey('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');
+const bellData = require('./bell_controller');
 module.exports.documentPage = async function(req,res){
     try{
         let documents = await Document.find({author:req.user.id}).sort('-createdAt');
+        let noty = await bellData.taskData(req.user.id);
         return res.render('documents',{
             title:'Documents',
-            docs:documents
+            docs:documents,
+            noty:noty
         });
     }catch(err){
         req.flash('error', err);
@@ -68,12 +71,14 @@ module.exports.uploadDoc = async function(req,res){
 module.exports.downloadDoc = async function(req,res){
     try{
         const file = await Document.findById(req.params.id);
+        let noty = await bellData.taskData(req.user.id);
         console.log(file);
         if(!file) {
             let documents = await Document.find({author:req.user.id}).sort('-createdAt');
             return res.render('documents',{
                 title:'Documents',
-                docs:documents
+                docs:documents,
+                noty:noty
             });
         } 
         res.download(file.downloadLink);

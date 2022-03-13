@@ -1,11 +1,14 @@
 const User =require('../models/user');
 const Problem =require('../models/problem');
+const bellData = require('./bell_controller');
 module.exports.problemPage = async function(req,res){
     try{
         let problems = await Problem.find({author:req.user.id}).sort('-createdAt');
+        let noty = await bellData.taskData(req.user.id);
         return res.render('problems',{
             title:'Problems',
-            problems:problems
+            problems:problems,
+            noty:noty
         });
     }catch(err){
         req.flash('error', err);
@@ -61,11 +64,13 @@ module.exports.viewProblem = async function(req, res){
         // console.log(problem);
         // console.log('malik',problem.author);
         // console.log('requested',req.user);
+        let noty = await bellData.taskData(req.user.id);
         if(problem){
             if(problem.author.id == req.user.id){
                 return res.render('problemView',{
                     title:problem.name,
-                    problem:problem
+                    problem:problem,
+                    noty:noty
                 });
             }else{
                 req.flash('error', err);
@@ -129,11 +134,13 @@ module.exports.updateProblem = async function(req, res){
         // console.log(problem);
         // console.log('malik',problem.author);
         // console.log('requested',req.user);
+        let noty = await bellData.taskData(req.user.id);
         if(problem){
             if(problem.author.id == req.user.id){
                 return res.render('problemUpdate',{
                     title:problem.name,
-                    problem:problem
+                    problem:problem,
+                    noty:noty
                 });
             }else{
                 req.flash('error', err);
