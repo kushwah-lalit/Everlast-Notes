@@ -3,6 +3,8 @@ const fs = require('fs');
 const path = require('path');
 const sgMail = require('@sendgrid/mail');
 // sendgrid api key for the connection validation
+sgMail.setApiKey('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');
+
 
 const crypto = require('crypto');
 const bellData = require('./bell_controller');
