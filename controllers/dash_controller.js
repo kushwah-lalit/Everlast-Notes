@@ -11,8 +11,8 @@ module.exports.home = function(req,res){
         let toppers = await User.find().sort('-problemCount').limit(10);
         let recents = await Problem.find({author:req.user}).sort('-createdAt').limit(10);
         const chartData= new Array();
-        for (let val of user.problems.values()) {
-            chartData.push(val);
+        for (let val of user.problems) {
+            chartData.push({category:val[0],progress:{solved:val[1],link:`/category/${val[0].replace(' ','+')}`}});
         }
         console.log(chartData);
         let noty = await bellData.taskData(req.user.id);

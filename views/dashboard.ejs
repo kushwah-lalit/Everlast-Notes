@@ -105,81 +105,97 @@
 </div>
 <script src="/js/bookmark.js"></script>
 <script>
-const ctx = document.getElementById('myChart');
-const labels = ['Recursion', 'Linked List', 'Stack', 'Queue', 'Tree', 'Binary Tree','BST','Maps','OOPs','Priority Queue','Trie','DP','Graph','Backtracking','Array','String','Bit Manipulation','Pointers','Mathematical','Other'];
-const backgrounds=[];
-const borders=[];
-for(let i=0;i<labels.length;i++){
-const r = Math.floor(Math.random()*256);
-const g = Math.floor(Math.random()*256);
-const b = Math.floor(Math.random()*256);
-backgrounds.push('rgba('+r+','+g+','+b+',0.3)');
-borders.push('rgba('+r+','+g+','+b+',1)');
-}
+    const ctx = document.getElementById('myChart');
+    const labels = ['Recursion', 'Linked List', 'Stack', 'Queue', 'Tree', 'Binary Tree','BST','Maps','OOPs','Priority Queue','Trie','DP','Graph','Backtracking','Array','String','Bit Manipulation','Pointers','Mathematical','Other'];
+    const backgrounds=[];
+    const borders=[];
+    for(let i=0;i<labels.length;i++){
+    const r = Math.floor(Math.random()*256);
+    const g = Math.floor(Math.random()*256);
+    const b = Math.floor(Math.random()*256);
+    backgrounds.push('rgba('+r+','+g+','+b+',0.3)');
+    borders.push('rgba('+r+','+g+','+b+',1)');
+    }
 
-const myChart = new Chart(ctx, {
-type: 'bar',
-data: {
-labels: labels,
-datasets: [{
-    label: 'Problems Solved',
-    data:[<%= chartData %>],
-    backgroundColor:backgrounds,
-    borderColor:borders,
-    borderWidth: 1,
-    borderRadius: 8,
-    hoverBorderWidth:2
-}]
-},
-options: {
-scales: {
-    y: {
-        ticks:{
-            color: 'white',
-            font: {
-                size: 14,
-                family:'Gilroy-Light',
-                style:'normal'
-            }
-
+    const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+        labels: labels,
+        datasets: [{
+            label: 'Problems Solved',
+            data:<%- JSON.stringify(chartData) %>,
+            // data:[1,2,3,5,6,8,3,4,8,4,24,7,2,23,7,9,3,7,8,4],
+            backgroundColor:backgrounds,
+            borderColor:borders,
+            borderWidth: 1,
+            borderRadius: 8,
+            hoverBorderWidth:2
+        }]
         },
-        beginAtZero:true
-    },
-    x: {
-        ticks:{
-            color: 'white',
-            font: {
-                size: 12,
-                family:'Gilroy-Light',
-                style:'normal'
-            }
+        options: {
+            parsing:{
+            xAxisKey:'category',
+            yAxisKey:'progress.solved'
+            },
+            scales: {
+                y: {
+                    ticks:{
+                        color: 'white',
+                        font: {
+                            size: 14,
+                            family:'Gilroy-Light',
+                            style:'normal'
+                        }
 
-        }
-    }
-},
-plugins: {
-    title: {
-        display: true,
-        text: 'Problems Solved Category wise',
-        color: 'white',
-        font: {
-                size: 16,
-                family:'Gilroy-Medium',
-                style:'normal'
-         }
-    },
-    legend: {
-        display: true,
-        labels: {
-            color: 'white',
-            font: {
-                size: 14,
-                family:'Gilroy-Light',
-                style:'normal'
+                    },
+                    beginAtZero:true
+                },
+                x: {
+                    ticks:{
+                        color: 'white',
+                        font: {
+                            size: 12,
+                            family:'Gilroy-Light',
+                            style:'normal'
+                        }
+
+                    }
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Problems Solved Category wise',
+                    color: 'white',
+                    font: {
+                            size: 16,
+                            family:'Gilroy-Medium',
+                            style:'normal'
+                    }
+                },
+                legend: {
+                    display: true,
+                    labels: {
+                        color: 'white',
+                        font: {
+                            size: 14,
+                            family:'Gilroy-Light',
+                            style:'normal'
+                        }
+                    }
+                }
             }
         }
+    });
+    function clickHandeler(click){
+        const points = myChart.getElementsAtEventForMode(click,'nearest',{intersect:true},true);
+        if(points.length){
+            const firstPoint = points[0];
+            const value = myChart.data.datasets[firstPoint.datasetIndex].data[firstPoint.index];
+            console.log(value.progress.link);
+            location.href = value.progress.link;
+            window.open();
+        }
     }
-}
-}
-});
+    ctx.onclick = clickHandeler;
 </script>
