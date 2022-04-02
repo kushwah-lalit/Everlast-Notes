@@ -13,7 +13,7 @@ const customMiddleware = require('./config/middleware');
 const db = require('./config/mongoose');
 const sgMail = require('@sendgrid/mail');
 // sendgrid api key for the connection validation
-sgMail.setApiKey('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');
+
 const expressLayouts = require('express-ejs-layouts');
 const sassMiddleware = require('node-sass-middleware');
 app.use(sassMiddleware({
