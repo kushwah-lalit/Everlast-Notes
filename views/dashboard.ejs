@@ -79,6 +79,19 @@
         <div id="lists">
             <div id="recents">
                 <div class="header"><div style="width:5%;text-align: center;">Sno.</div><div style="width:53%">Recently Solved Problems</div><div style="width:30%">Category</div><div style="width:12%"></div></div>
+                <% if(!recents.length){%>
+                    <div class="empty-state">
+                        <div class="empty-state__content animate__animated animate__pulse">
+                          <div class="empty-state__icon">
+                            <img src="/images/search-result-not-found-2130361-1800925.png" alt="no-result-found">
+                          </div>
+                          <div class="empty-state__message">No Problem solved yet.</div>
+                          <div class="empty-state__help">
+                            Start managing codes of solved problems.
+                          </div>
+                        </div>
+                    </div>
+                <%}%>
                 <% var i=1; for(problem of recents){%>
                     <div class="item animate__animated animate__fadeInUp"><div style="width:5%;text-align: center;"><%= i++%>.</div><div style="width:53%" class="question"><a href="/problem/view/<%= problem.id%>" data-toggle="tooltip" data-placement="top" title="View Problem"><%= problem.name%></a></div><div style="width:27%"><%= problem.topic%></div><div style="width:15%; display: flex; justify-content: space-around;"><a style="color:#6BAAED;" href="<%= problem.link%>" target="_blank" target="_blank" data-toggle="tooltip" data-placement="top" title="Practice Problem"><i class="fa-solid fa-keyboard"></i></a>&nbsp<a style="color: rgba(255, 255, 255, 0.87);" onclick="toggleBookmark('/favourite/toggleLike/<%=problem.id%>')" data-toggle="tooltip" data-placement="top" title="Favourite | Unfavourite">
                         <% if(problem.favourite){%>
