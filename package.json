@@ -4,7 +4,7 @@
   "description": "Track Competitive Programming Progress and store notes,code and PDFs",
   "main": "index.js",
   "engines": {
-    "npm": "6.14.12"
+    "node": "14.16.1"
   },
   "scripts": {
     "start": "nodemon index.js",
