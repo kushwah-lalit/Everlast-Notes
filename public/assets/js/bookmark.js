@@ -1,0 +1,1 @@
+function toggleBookmark(a){$.ajax({type:"get",url:a,success:function(a){"fa-solid fa-bookmark"===$(`#${a.data.problem_id}`)[0].classList.value?$(`#${a.data.problem_id}`)[0].classList.value="fa-regular fa-bookmark":$(`#${a.data.problem_id}`)[0].classList.value="fa-solid fa-bookmark"},error:function(a){console.log(a.responseText)}})}
