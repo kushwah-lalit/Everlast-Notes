@@ -58,8 +58,8 @@ function sortByDate(){
 
 function ValidateSize(file) {
   const FileSize = file.files[0].size / 1024 / 1024;
-  if (FileSize > 20) {
-      alert('File size exceeds 20 MB');
+  if (FileSize > 2) {
+      alert('File size exceeds 2 MB');
       document.getElementById('file-input').value = null;
       // $('#file-input').value() = null;
   }
