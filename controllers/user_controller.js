@@ -1,9 +1,10 @@
+require('dotenv').config();
 const User =require('../models/user');
 const fs = require('fs');
 const path = require('path');
 const sgMail = require('@sendgrid/mail');
 // sendgrid api key for the connection validation
-sgMail.setApiKey('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');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 
 const crypto = require('crypto');
@@ -47,10 +48,10 @@ module.exports.resetpassword = function(req, res){
             const msg = {
                 to: user.email,
                 from: {
-                    email:'mailer.everlastnotes@gmail.com',
+                    email:process.env.SENDGRID_EMAIL,
                     name:'Everlast Notes'
                 },
-                templateId: 'd-465d97b674e34474ba86a5bc48d6b2fa',
+                templateId: process.env.RESET_PASSWORD_TEMPLATE,
                 dynamic_template_data: {
                 subject:'Account Password Changed',
                 name:user.name,
@@ -116,9 +117,9 @@ module.exports.create = function(req, res){
                     const msg = {
                         to: user.email,
                         from: {
-                            email:'mailer.everlastnotes@gmail.com',
+                            email: process.env.SENDGRID_EMAIL,
                             name:'Everlast Notes'},
-                        templateId: 'd-26b2f9c532034dd786126919f9db2288',
+                        templateId:process.env.SIGNUP_TEMPLATE,
                         dynamic_template_data: {
                         name:user.name,
                         host:req.headers.host,

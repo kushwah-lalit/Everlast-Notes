@@ -1,10 +1,11 @@
+require('dotenv').config();
 const User =require('../models/user');
 const Document =require('../models/document');
 const fs = require('fs');
 const path = require('path');
 const sgMail = require('@sendgrid/mail');
 // sendgrid api key for the connection validation
-sgMail.setApiKey('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');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const bellData = require('./bell_controller');
 module.exports.documentPage = async function(req,res){
@@ -125,9 +126,9 @@ module.exports.shareDoc = function(req,res){
                     var msg = {
                         to: req.body.mail,
                         from: {
-                            email:'mailer.everlastnotes@gmail.com',
+                            email:process.env.SENDGRID_EMAIL,
                             name:'Everlast Notes'},
-                        templateId: 'd-08896654f43147c6ae7860b3ef58b6fd',
+                        templateId: process.env.DRIVE_LINK_TEMPLATE,
                         dynamic_template_data: {
                         name:file.author.name,
                         fileLink:file.downloadLink
@@ -137,9 +138,9 @@ module.exports.shareDoc = function(req,res){
                     var msg = {
                         to: req.body.mail,
                         from: {
-                            email:'mailer.everlastnotes@gmail.com',
+                            email:process.env.SENDGRID_EMAIL,
                             name:'Everlast Notes'},
-                        templateId: 'd-b85c0fd80d284a91aea54e224daf8e2a',
+                        templateId: process.env.FILE_LINK_TEMPLATE,
                         dynamic_template_data: {
                         name:file.author.name,
                         host:req.headers.host,

@@ -1,3 +1,4 @@
+require('dotenv').config();
 const passport = require('passport');
 // as passport google outh has both 0auth2 ans 1 so we took it....but now wwe will be using the OAuth2 strategy only
 const googleStrategy = require('passport-google-oauth').OAuth2Strategy;
@@ -10,9 +11,9 @@ const User = require('../models/user');
 // tell passport to use a new strategy for google login
 passport.use(new googleStrategy({
     //credentials
-        clientID: '1021920566916-6s9ppl7nrtasa3roi58auccguifg95gi.apps.googleusercontent.com', // e.g. asdfghjkkadhajsghjk.apps.googleusercontent.com
-        clientSecret: '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', // e.g. _ASDFA%KFJWIASDFASD#FAD-
-        callbackURL: "http://localhost:8000/users/auth/google/callback"
+        clientID:process.env.CLIENT_ID,
+        clientSecret:process.env.CLIENT_SECRET,
+        callbackURL:process.env.CALLBACK_URL
     },
 
     function(accessToken, refreshToken, profile, done){

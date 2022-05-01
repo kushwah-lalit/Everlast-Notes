@@ -1,6 +1,7 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/Everlast_Notes');
+mongoose.connect(process.env.MONGO_URL);
 
 const db = mongoose.connection;
 

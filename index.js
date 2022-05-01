@@ -1,6 +1,7 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
-const port = 8000;
+const port = process.env.PORT || 8000;
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
@@ -13,15 +14,13 @@ const customMiddleware = require('./config/middleware');
 const db = require('./config/mongoose');
 const sgMail = require('@sendgrid/mail');
 // sendgrid api key for the connection validation
-sgMail.setApiKey('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');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const expressLayouts = require('express-ejs-layouts');
 const sassMiddleware = require('node-sass-middleware');
 app.use(sassMiddleware({
     src: './assets/scss',
     dest: './assets/css',
-    // src: path.join(__dirname, env.asset_path, 'scss'),
-    // dest: path.join(__dirname, env.asset_path, 'css'),
     debug: true,
     outputStyle: 'extended',
     prefix: '/css'
@@ -38,14 +37,14 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(session({
     name: 'EverlastNotes',
-    secret: 'HelloWorld',
+    secret: process.env.SESSION_SECRET,
     saveUninitialized: false,
     resave: false,
     cookie: {
         maxAge: (1000 * 60 * 100)
     },
     store: MongoStore.create({
-        mongoUrl: 'mongodb://localhost/Everlast_Notes',
+        mongoUrl: process.env.MONGO_URL,
         autoRemove: 'disabled'
     })
 }));
