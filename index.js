@@ -12,6 +12,7 @@ const crypto = require('crypto');
 const flash = require('connect-flash');
 const customMiddleware = require('./config/middleware');
 const db = require('./config/mongoose');
+const CronJob = require('./config/dailyEmail');
 const sgMail = require('@sendgrid/mail');
 // sendgrid api key for the connection validation
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
