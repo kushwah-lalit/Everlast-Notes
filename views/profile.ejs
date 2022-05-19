@@ -75,7 +75,7 @@
             <div id="mainInfo">
                 
                     <form class="avatar-wrapper" action="/users/update/<%= profile_user.id %>" method="POST" enctype="multipart/form-data">
-                        <img class="profile-pic" src="<%= profile_user.avatar %>">
+                        <img class="profile-pic" src="<%= profile_user.avatar %>" onerror="this.onerror=null; this.src='/images/hacker.png'">
                         <% if(locals.user.id == profile_user.id){ %>
                         <div class="upload-button">
                         <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>

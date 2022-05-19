@@ -34,7 +34,7 @@
                 <%}%>
             </div>
             </div>
-           <a href="/users/profile/<%=locals.user._id %>" data-toggle="tooltip" data-placement="top" title="View Profile"><img src="<%=locals.user.avatar%>"></img></a>
+           <a href="/users/profile/<%=locals.user._id %>" data-toggle="tooltip" data-placement="top" title="View Profile"><img src="<%=locals.user.avatar%>" onerror="this.onerror=null; this.src='/images/hacker.png'"></img></a>
         </div>
     </div>
 </nav>

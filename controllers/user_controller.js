@@ -174,11 +174,15 @@ module.exports.verifyEmail = function(req,res){
 };
 module.exports.profile = async function(req,res){
     User.findById(req.params.id,async function(err, user){
-        if(err){
+        let noty = await bellData.taskData(req.user.id);
+        if(err||!user){
             console.log('Error finding user with requested',err);
+            return res.render('404', {
+                title: '404 Page not found',
+                noty:noty
+            });
         }
         let rank = (((await User.find({},'email-_id').sort('-problemCount')).map(({_id}) => _id.toString()))).indexOf(user.id);
-        let noty = await bellData.taskData(req.user.id);
         return res.render('profile', {
             title: `Profile | ${user.name}`,
             profile_user: user,
@@ -198,7 +202,7 @@ module.exports.update = async function(req, res){
                 // we wont be able to read the form details as form is multipart...so this statci helps us
                 console.log(req.file);
                 if(req.file){
-                    if(user.avatar.startsWith("/uploads")){
+                    if(user.avatar.startsWith("/uploads") && fs.existsSync(path.join(__dirname, '..' , user.avatar))){
                         fs.unlinkSync(path.join(__dirname, '..' , user.avatar));
                     }
                     // this will saving the address or path in the user avtar key

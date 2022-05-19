@@ -107,7 +107,7 @@
                 <div class="header"><div style="width:15%;text-align: center;">Rank</div><div style="width:65%">Top Performers</div><div style="width:20%"></div></div>
                 <% var i=1; for(person of toppers){%>
                     <div class="item animate__animated animate__fadeInUp"><div style="width:15%;text-align: center;color: #6BAAED !important; font-size:1.2rem;font-weight:400;font-family: 'Gilroy-Medium', sans-serif;">#<%= i++%></div><div style="width:65%" class="question"><a href="/users/profile/<%= person.id%>" data-toggle="tooltip" data-placement="top" title="View Profile"><%= person.name%></a></div><div style="width:20%;box-sizing: border-box;" id="userlistdp">
-                        <a href="/users/profile/<%= person.id%>" data-toggle="tooltip" data-placement="top" title="View Profile"><img src="<%= person.avatar%>"></img></a>
+                        <a href="/users/profile/<%= person.id%>" data-toggle="tooltip" data-placement="top" title="View Profile"><img src="<%= person.avatar%>" onerror="this.onerror=null; this.src='/images/hacker.png'"></img></a>
                     </div>
                     </div>
                 <%}%> 
