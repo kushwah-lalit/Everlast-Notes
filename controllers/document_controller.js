@@ -35,6 +35,7 @@ module.exports.uploadDoc = async function(req,res){
             await Document.uploadedDocument( req, res,function(err){
                 if(err){
                     console.log('Multer Error :',err);
+                    return;
                 }
                 let OriginalName = req.body.name;
                 if(req.file){
@@ -70,39 +71,52 @@ module.exports.uploadDoc = async function(req,res){
         return res.redirect('back');
     }
 };
-module.exports.downloadDoc = async function(req,res){
-    try{
-        const file = await Document.findById(req.params.id);
+module.exports.downloadDoc = function(req,res){
+    Document.findById(req.params.id, async function(err,file){
         let noty = await bellData.taskData(req.user.id);
-        console.log(file);
-        if(!file) {
-            let documents = await Document.find({author:req.user.id}).sort('-createdAt');
-            return res.render('documents',{
-                title:'Documents',
-                docs:documents,
+        if(err || !file){
+            return res.render('404', {
+                title: '404 Page not found',
                 noty:noty
             });
-        } 
-        res.download(file.downloadLink);
-    }catch(err){
-        req.flash('error', err);
-        console.log('Doc not Downloaded :: Error :',err);
-        return res.redirect('back');
-    }
+        }
+        console.log(path.join(__dirname, '..' , file.downloadLink.substr(1)));
+        if(file.uploadWay === "Google Drive Link"){
+            res.download(file.downloadLink);
+        }else{
+            if(fs.existsSync(path.join(__dirname, '..' , file.downloadLink.substr(1)))){
+                console.log('File Found');
+                res.download(file.downloadLink);
+            }else{
+                console.log('File Not Found');
+                return res.render('404', {
+                    title: '404 Page not found',
+                    noty:noty
+                });
+            } 
+        }
+    });
 };
 module.exports.deleteDoc = function(req,res){
   
     Document.findById(req.params.id).populate('author').exec(async function(err,file){
-        if(!file) {
+        let noty = await bellData.taskData(req.user.id);
+        if(err || !file){
             req.flash('error', err);
             console.log('No Such Doc found :: Error :',err);
-            return;
+            return res.render('404', {
+                title: '404 Page not found',
+                noty:noty
+            });
         }
         if(file.author.id == req.user.id){
             if(file.uploadWay === "Google Drive Link"){
                 await file.remove();
             }else{
-                fs.unlinkSync(path.join(__dirname, '..' ,file.downloadLink.substr(1)));
+                if(fs.existsSync(path.join(__dirname, '..' , file.downloadLink.substr(1)))){
+                    console.log('File Found');
+                    fs.unlinkSync(path.join(__dirname, '..' ,file.downloadLink.substr(1)));
+                }
                 await file.remove();
             }
             console.log('Doc Deleted Successfully');
