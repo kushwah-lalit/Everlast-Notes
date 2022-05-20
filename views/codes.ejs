@@ -70,7 +70,7 @@
     
     <div id="data">
         <% if(locals.user){%>
-        <form id="shortdata" action="/code/create" method="post">
+        <form class="animate__animated animate__slideInDown" id="shortdata" action="/code/create" method="post">
             <input type="text"  name="name" placeholder="Code Snippet Title" class="form-container" required>
             <textarea type="text" name="description" placeholder="Learnings or any other Code related information......" class="form-container" style ="height:8rem;" required></textarea>
             <textarea type="text" name="code" placeholder="Paste here Code Snippet..." class="form-container" style ="height:8rem;" required></textarea>

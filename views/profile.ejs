@@ -70,9 +70,9 @@
 </div>
     
 <div id="data">
-        <div id="pic" class="animate__animated animate__fadeInUp">
+        <div id="pic">
             
-            <div id="mainInfo">
+            <div id="mainInfo" class="animate__animated animate__slideInDown" style="font-size:2.5rem;">
                 
                     <form class="avatar-wrapper" action="/users/update/<%= profile_user.id %>" method="POST" enctype="multipart/form-data">
                         <img class="profile-pic" src="<%= profile_user.avatar %>" onerror="this.onerror=null; this.src='/images/hacker.png'">
@@ -85,7 +85,7 @@
                         </form>
              
             </div>
-            <div id="userInfo">
+            <div id="userInfo" class="animate__animated animate__fadeInUp animate__delay-0.5s animate__slow">
                 <div id="leftInfo">
                 <div class="brick" style="width:100%;height:100%; flex-direction: column;align-items: flex-end; box-sizing: border-box;padding: 1rem;"><div id="topic" style="width: 100%;text-align: center; font-size: 2.6rem;font-weight:400;">#<%= rank%></div><div id="stat" style="width: 100%;text-align: center; font-size: 1.4rem;font-weight: 600;">Overall Rank</div></div>
                 </div>
@@ -97,7 +97,7 @@
                 </div>
                 
             </div>
-            <div id="bottomInfo">
+            <div id="bottomInfo" class=" animate__animated animate__fadeInUp animate__delay-1s">
                 <div id="profile">
                 <a href="<%= profile_user.github%>" target="_blank"><img style="border-radius:5px; border:none;width:2.2rem;height: 2.2rem;" src="/images/github.png"></img></a>
                 </div>

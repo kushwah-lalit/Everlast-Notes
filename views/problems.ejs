@@ -70,7 +70,7 @@
     
     <div id="data">
         <% if(locals.user){%>
-        <form id="shortdata" action="/problem/create" method="post">
+        <form class="animate__animated animate__slideInDown" id="shortdata" action="/problem/create" method="post">
             <input type="text"  name="name" placeholder="Problem Title" class="form-container" required>
             <textarea type="text" name="description" placeholder="Learnings or any other Problem related information......" class="form-container" style ="height:8rem;" required></textarea>
             <input type="url"  name="link" placeholder="Problem Practice URL" class="form-container" required>
